@@ -23,14 +23,6 @@ input {
   font-size: 16px;
 }
 
-input:valid {
-  background-color: white;
-}
-
-input:invalid {
-  background-color: lightpink;
-}
-
 body {
   margin: 0;
   display: flex;

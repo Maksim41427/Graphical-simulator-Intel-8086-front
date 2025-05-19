@@ -53,17 +53,17 @@ const Program: FC = () => {
       background: "#15ff43",    
       offset: 0.6    
   },{      
-      marginTop: "360px",
+      marginTop: "380px",
       marginLeft: "420px",
       background: "#15ff43",   
       offset: 0.8    
   },{      
-      marginTop: "360px",
+      marginTop: "380px",
       marginLeft: "473px",
       background: "#15ff43",   
       offset: 1    
   }];
-
+  
   const frames3 = [{ //7 от АЛУ к RAM
       marginTop: "267px", //left: 173, top: 481-243 454
       marginLeft: "157px",
@@ -176,12 +176,12 @@ const Program: FC = () => {
       background: "#15ff43",   
       offset: 0.5    
   },{      
-      marginTop: "360px",
+      marginTop: "380px",
       marginLeft: "420px",
       background: "#15ff43",   
       offset: 0.75    
   },{      
-      marginTop: "360px",
+      marginTop: "380px",
       marginLeft: "473px",
       background: "#15ff43",   
       offset: 1    
@@ -225,12 +225,12 @@ const Program: FC = () => {
       background: "#15ff43",
       offset: 0.33    
   },{      
-      marginTop: "360px",
+      marginTop: "380px",
       marginLeft: "420px",
       background: "#15ff43",   
       offset: 0.66    
   },{      
-      marginTop: "360px",
+      marginTop: "380px",
       marginLeft: "473px",
       background: "#15ff43",   
       offset: 1    
@@ -254,12 +254,12 @@ const Program: FC = () => {
   }];
 
   const frames10 = [{ //3 от REG к АЛУ 1вход
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "473px",
       background: "#15ff43",      
       offset: 0    
   },{      
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "420px",
       background: "#15ff43",   
       offset: 0.33    
@@ -276,12 +276,12 @@ const Program: FC = () => {
   }];
 
   const frames11 = [{ //3 от REG к АЛУ 2вход
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "473px",
       background: "#15ff43",      
       offset: 0    
   },{      
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "420px",
       background: "#15ff43",   
       offset: 0.33    
@@ -298,12 +298,12 @@ const Program: FC = () => {
   }];
 
   const frames12 = [{ //3 от REG к SREG
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "473px",
       background: "#15ff43",      
       offset: 0    
   },{      
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "420px",
       background: "#15ff43",   
       offset: 0.33    
@@ -320,12 +320,12 @@ const Program: FC = () => {
   }];
 
   const frames13 = [{ //3 от REG к SM
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "473px",
       background: "#15ff43",      
       offset: 0    
   },{      
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "420px",
       background: "#15ff43",   
       offset: 0.33    
@@ -342,12 +342,12 @@ const Program: FC = () => {
   }];
 
   const frames14 = [{ //5 от REG к RAM
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "473px",
       background: "#15ff43",      
       offset: 0    
   },{      
-      marginTop: "360px",
+      marginTop: "340px",
       marginLeft: "420px",
       background: "#15ff43",   
       offset: 0.2    
@@ -495,12 +495,12 @@ const Program: FC = () => {
       background: "#15ff43",   
       offset: 0.6    
   },{      
-      marginTop: "360px",
+      marginTop: "380px",
       marginLeft: "420px",
       background: "#15ff43",    
       offset: 0.8    
   },{      
-      marginTop: "360px",
+      marginTop: "380px",
       marginLeft: "473px",
       background: "#15ff43",   
       offset: 1    
@@ -635,6 +635,11 @@ const Program: FC = () => {
 
         
         image2?.addEventListener("click", () => {
+            // var name= document.getElementById("BP").value;
+            // var reg=/[^a-z0-9]+/;
+            // if(reg.test(name)){              
+            //     alert("Your Password Cant Have any thing other than a-zA-Z0-9!@#$%^*_| - Play It    Straight!");
+            // }
             ViborComandi();
         });
 
@@ -760,7 +765,7 @@ const Program: FC = () => {
                         console.log(RAMcomand?.value);
                     if (RAMcomand?.value == "----") RK.value = 0;
                     else RK.value = Number(RAMcomand?.value).toString(16);
-                    IP.value = Number(parseInt(IP.value, 16) + 1).toString(16);
+                    IP.value = Number(parseInt(IP.value, 16) + 3).toString(16);
                     switch(RK.value){
                         case "1" : 
                             MOV_comand();
@@ -940,18 +945,21 @@ const Program: FC = () => {
             <div data-layer="Line 48" className="Line48" style={{width: 14.87, height: 0, left: 249, top: 532-337, position: 'absolute', transform: 'rotate(110deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 49" className="Line49" style={{width: 14.87, height: 0, left: 249, top: 559-337, position: 'absolute', transform: 'rotate(-110deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 31" className="Line31" style={{width: 90, height: 0, left: 350, top: 755-337, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>      
-            <div data-layer="Line 34" className="Line34" style={{width: 35, height: 0, left: 440, top: 754-337, position: 'absolute', transform: 'rotate(-90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
-            <div data-layer="Line 22" className="Line22" style={{width: 33, height: 0, left: 440, top: 624-243, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
-            <div data-layer="Line 21" className="Line21" style={{width: 33, height: 0, left: 440, top: 597-243, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
-            <div data-layer="Line 42" className="Line42" style={{width: 14.87, height: 0, left: 468, top: 596-242, position: 'absolute', transform: 'rotate(70deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
-            <div data-layer="Line 43" className="Line43" style={{width: 14.87, height: 0, left: 468, top: 624-243, position: 'absolute', transform: 'rotate(-70deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
-            <div data-layer="Line 44" className="Line44" style={{width: 14.87, height: 0, left: 462, top: 596-242, position: 'absolute', transform: 'rotate(110deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
-            <div data-layer="Line 45" className="Line45" style={{width: 14.87, height: 0, left: 462, top: 624-243, position: 'absolute', transform: 'rotate(-110deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 34" className="Line34" style={{width: 35-20, height: 0, left: 440, top: 754-337, position: 'absolute', transform: 'rotate(-90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 22" className="Line22" style={{width: 33, height: 0, left: 440, top: 624-243+20, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 21" className="Line21" style={{width: 33, height: 0, left: 440, top: 597-243+20, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 42" className="Line42" style={{width: 14.87, height: 0, left: 468, top: 596-242+20, position: 'absolute', transform: 'rotate(70deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 43" className="Line43" style={{width: 14.87, height: 0, left: 468, top: 624-243+20, position: 'absolute', transform: 'rotate(-70deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 34" className="Line34" style={{width: 12, height: 0, left: 440, top: 754-337-44, position: 'absolute', transform: 'rotate(-90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 22" className="Line22" style={{width: 33, height: 0, left: 440, top: 624-243-20, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 21" className="Line21" style={{width: 33, height: 0, left: 440, top: 597-243-20, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 44" className="Line44" style={{width: 14.87, height: 0, left: 468, top: 596-242-20, position: 'absolute', transform: 'rotate(110deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 45" className="Line45" style={{width: 14.87, height: 0, left: 468, top: 624-243-20, position: 'absolute', transform: 'rotate(-110deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
 
 
 
             {/* от REG к SREG */}
-            <div data-layer="Line 9" className="Line9" style={{width: 74, height: 0, left: 440, top: 280, position: 'absolute', transform: 'rotate(90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
+            <div data-layer="Line 9" className="Line9" style={{width: 74-20, height: 0, left: 440, top: 280, position: 'absolute', transform: 'rotate(90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 65" className="Line65" style={{width: 124, height: 0, left: 440, top: 128, position: 'absolute', transform: 'rotate(90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 14" className="Line14" style={{width: 40, height: 0, left: 440, top: 128, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 10" className="Line10" style={{width: 93, height: 0, left: 414, top: 102, position: 'absolute', transform: 'rotate(90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
