@@ -2,7 +2,7 @@ import { createRef, type FC } from "react";
 import { Table } from "react-bootstrap";
 
 const Program: FC = () => {
-  const duration = 100;//5500;
+  const duration = 5500;
   const config = {    
     duration: duration, // время анимации в миллисекундах
     easing: "linear", // поведение анимации(замедление в начале и в конце)
@@ -613,24 +613,33 @@ const Program: FC = () => {
                 case "BL":
                 case "CL":
                 case "DL":
-                    var Arg2_end_point = document.getElementById(Arg2.value);
-                    RAM_data_from_mark.value = Arg2_end_point.value;
+                    Data?.animate(frames14, config);
+                    setTimeout(() => {
+                        var Arg2_end_point = document.getElementById(Arg2.value);
+                        RAM_data_from_mark.value = Arg2_end_point.value;
+                    }, duration);
                     break;
                 case "Ax": 
                 case "Bx":
                 case "Cx":
                 case "Dx":
-                    var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
-                    var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
-                    RAM_data_from_mark.value = xH_Arg2.value + xL_Arg2.value;
+                    Data?.animate(frames14, config);
+                    setTimeout(() => {
+                        var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                        var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                        RAM_data_from_mark.value = xH_Arg2.value + xL_Arg2.value;
+                    }, duration);
                     break;
                 case "Si":
                 case "Di":
                 case "BP":
                 case "SP":
                 case "IP":
-                    var Arg2_end_point = document.getElementById(Arg2.value);
-                    RAM_data_from_mark.value = Arg2_end_point.value;
+                    Data?.animate(frames14, config);
+                    setTimeout(() => {
+                        var Arg2_end_point = document.getElementById(Arg2.value);
+                        RAM_data_from_mark.value = Arg2_end_point.value;
+                    }, duration);
                     break;
             }
             return;
@@ -651,25 +660,34 @@ const Program: FC = () => {
                 case "BL":
                 case "CL":
                 case "DL":
-                    var Arg1_end_point = document.getElementById(Arg1.value);
-                    Arg1_end_point.value = RAM_data_from_mark.value;
+                    Data?.animate(frames18, config);
+                    setTimeout(() => {
+                        var Arg1_end_point = document.getElementById(Arg1.value);
+                        Arg1_end_point.value = RAM_data_from_mark.value;
+                    }, duration);
                     break;
                 case "Ax": 
                 case "Bx":
                 case "Cx":
                 case "Dx":
-                    var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
-                    var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
-                    xH_Arg1.value = RAM_data_from_mark.value.substring(0, RAM_data_from_mark.value.length - 3);
-                    xL_Arg1.value = RAM_data_from_mark.value.substring(RAM_data_from_mark.value.length - 3, RAM_data_from_mark.value.length);
+                    Data?.animate(frames18, config);
+                    setTimeout(() => {
+                        var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                        var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                        xH_Arg1.value = RAM_data_from_mark.value.substring(0, RAM_data_from_mark.value.length - 3);
+                        xL_Arg1.value = RAM_data_from_mark.value.substring(RAM_data_from_mark.value.length - 3, RAM_data_from_mark.value.length);
+                    }, duration);
                     break;
                 case "Si":
                 case "Di":
                 case "BP":
                 case "SP":
                 case "IP":
-                    var Arg1_end_point = document.getElementById(Arg1.value);
-                    Arg1_end_point.value = RAM_data_from_mark.value;
+                    Data?.animate(frames18, config);
+                    setTimeout(() => {
+                        var Arg1_end_point = document.getElementById(Arg1.value);
+                        Arg1_end_point.value = RAM_data_from_mark.value;
+                    }, duration);
                     break;
             }
             return; 
@@ -721,23 +739,29 @@ const Program: FC = () => {
                     case "Bx":
                     case "Cx":
                     case "Dx":
-                        var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
-                        var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
-                        var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
-                        var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
-                        xH_Arg1.value = xH_Arg2.value;
-                        xL_Arg1.value = xL_Arg2.value;
+                        Data?.animate(frames21, config);
+                        setTimeout(() => {
+                            var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                            var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                            var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                            var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                            xH_Arg1.value = xH_Arg2.value;
+                            xL_Arg1.value = xL_Arg2.value;
+                        }, duration);
                         break;
                     case "Si":
                     case "Di":
                     case "BP":
                     case "SP":
                     case "IP":
-                        var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
-                        var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
-                        var Arg2_end_point = document.getElementById(Arg2.value);
-                        xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 3);
-                        xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 3, Arg2_end_point.value.length);
+                        Data?.animate(frames21, config);
+                        setTimeout(() => {
+                            var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                            var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                            var Arg2_end_point = document.getElementById(Arg2.value);
+                            xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 3);
+                            xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 3, Arg2_end_point.value.length);
+                        }, duration);
                         break;
 
                         
@@ -745,11 +769,14 @@ const Program: FC = () => {
                     case "DS":
                     case "CS":
                     case "ES":
-                        var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
-                        var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
-                        var Arg2_end_point = document.getElementById(Arg2.value);
-                        xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 3);
-                        xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 3, Arg2_end_point.value.length);
+                        Data?.animate(frames8, config);
+                        setTimeout(() => {
+                            var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                            var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                            var Arg2_end_point = document.getElementById(Arg2.value);
+                            xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 3);
+                            xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 3, Arg2_end_point.value.length);
+                        }, duration);
                         break;
 
 
@@ -776,19 +803,25 @@ const Program: FC = () => {
                     case "Bx":
                     case "Cx":
                     case "Dx":
-                        var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
-                        var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
-                        var Arg1_end_point = document.getElementById(Arg1.value);
-                        Arg1_end_point.value = xH_Arg2.value + xL_Arg2.value;
+                        Data?.animate(frames21, config);
+                        setTimeout(() => {
+                            var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                            var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            Arg1_end_point.value = xH_Arg2.value + xL_Arg2.value;
+                        }, duration);
                         break;
                     case "Si":
                     case "Di":
                     case "BP":
                     case "SP":
                     case "IP":
-                        var Arg2_end_point = document.getElementById(Arg2.value);
-                        var Arg1_end_point = document.getElementById(Arg1.value);
-                        Arg1_end_point.value = Arg2_end_point.value;
+                        Data?.animate(frames21, config);
+                        setTimeout(() => {
+                            var Arg2_end_point = document.getElementById(Arg2.value);
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            Arg1_end_point.value = Arg2_end_point.value;
+                        }, duration);
                         break;
 
                         
@@ -796,15 +829,21 @@ const Program: FC = () => {
                     case "DS":
                     case "CS":
                     case "ES":
-                        var Arg2_end_point = document.getElementById(Arg2.value);
-                        var Arg1_end_point = document.getElementById(Arg1.value);
-                        Arg1_end_point.value = Arg2_end_point.value;
+                        Data?.animate(frames8, config);
+                        setTimeout(() => {
+                            var Arg2_end_point = document.getElementById(Arg2.value);
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            Arg1_end_point.value = Arg2_end_point.value;
+                        }, duration);
                         break;
 
 
                     default:
-                        var Arg1_end_point = document.getElementById(Arg1.value);
-                        Arg1_end_point.value =Arg2.value;
+                        Data?.animate(frames18, config);
+                        setTimeout(() => {
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            Arg1_end_point.value =Arg2.value;
+                        }, duration);
                         break;
                 }
                 break;
@@ -820,19 +859,25 @@ const Program: FC = () => {
                     case "Bx":
                     case "Cx":
                     case "Dx":
-                        var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
-                        var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
-                        var Arg1_end_point = document.getElementById(Arg1.value);
-                        Arg1_end_point.value = xH_Arg2.value + xL_Arg2.value;
+                        Data?.animate(frames12, config);
+                        setTimeout(() => {
+                            var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                            var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            Arg1_end_point.value = xH_Arg2.value + xL_Arg2.value;
+                        }, duration);
                         break;
                     case "Si":
                     case "Di":
                     case "BP":
                     case "SP":
                     case "IP":
-                        var Arg2_end_point = document.getElementById(Arg2.value);
-                        var Arg1_end_point = document.getElementById(Arg1.value);
-                        Arg1_end_point.value = Arg2_end_point.value;
+                        Data?.animate(frames12, config);
+                        setTimeout(() => {
+                            var Arg2_end_point = document.getElementById(Arg2.value);
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            Arg1_end_point.value = Arg2_end_point.value;
+                        }, duration);
                         break;
                 }
                 break;
