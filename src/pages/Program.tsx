@@ -2,10 +2,10 @@ import { createRef, type FC } from "react";
 import { Table } from "react-bootstrap";
 
 const Program: FC = () => {
-  const duration = 5500;
+  const duration = 100;//5500;
   const config = {    
     duration: duration, // время анимации в миллисекундах
-    easing: "ease-in-out", // поведение анимации(замедление в начале и в конце)
+    easing: "linear", // поведение анимации(замедление в начале и в конце)
     iterations: 1,
   };
 
@@ -537,6 +537,28 @@ const Program: FC = () => {
       offset: 1    
   }];
 
+  const frames21 = [{ //3 от REG к REG
+      marginTop: "340px",
+      marginLeft: "473px",
+      background: "#15ff43",      
+      offset: 0    
+  },{      
+      marginTop: "340px",
+      marginLeft: "420px",
+      background: "#15ff43",   
+      offset: 0.33    
+  },{      
+      marginTop: "380px",
+      marginLeft: "420px",
+      background: "#15ff43",   
+      offset: 0.66    
+  },{      
+      marginTop: "380px",
+      marginLeft: "473px",
+      background: "#15ff43",   
+      offset: 1    
+  }];
+
     var rows_size = 3, rows = [];
     rows = [
         { address: "0", data: "", mark: "", command: "----", arg1:"", arg2:""}
@@ -558,6 +580,16 @@ const Program: FC = () => {
 
     }, 1);
 
+    setTimeout(() => {
+        const image1 = document.getElementById("image 1");
+        var Data = document.getElementById("Data");
+        
+        image1?.addEventListener("click", () => {
+            Data?.animate(frames3, config);
+        });
+
+    }, 1);
+
     function MOV_comand() {
         var Data = document.getElementById("Data");
         var IP = document.getElementById("IP");
@@ -565,99 +597,245 @@ const Program: FC = () => {
         var SM = document.getElementById("SM");
         var Arg1 = document.getElementById(SM.value + "Arg1");
         var Arg2 = document.getElementById(SM.value + "Arg2");
-        switch(Arg2.value){
-            case "Si" :
-            case "Di" :
-            case "BP" :
-            case "SP" :
-            case "IP" :
-                if (Arg1.value[0] == "[") {
-                    for (const input of document.querySelectorAll("input.mark")) {
-                        if (input.value.includes(Arg2.value.substring(1, Arg2.value.length - 1))) {
-                            var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
-                        }
-                    }
+
+        if (Arg1.value[0] == "[") {
+            for (const input of document.querySelectorAll("input.mark")) {
+                if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                    var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+                }
+            }
+            switch(Arg2.value){
+                case "AH": 
+                case "BH":
+                case "CH":
+                case "DH":
+                case "AL": 
+                case "BL":
+                case "CL":
+                case "DL":
                     var Arg2_end_point = document.getElementById(Arg2.value);
                     RAM_data_from_mark.value = Arg2_end_point.value;
-                } else if (Arg1.value.length == 2) {
-                    console.log("REG2");
+                    break;
+                case "Ax": 
+                case "Bx":
+                case "Cx":
+                case "Dx":
+                    var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                    var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                    RAM_data_from_mark.value = xH_Arg2.value + xL_Arg2.value;
+                    break;
+                case "Si":
+                case "Di":
+                case "BP":
+                case "SP":
+                case "IP":
                     var Arg2_end_point = document.getElementById(Arg2.value);
-                    var Arg1_end_point = document.getElementById(Arg1.value);
-                    Arg1_end_point.value = Arg2_end_point.value;
-                } else {
-                    var xH_Arg2 = document.getElementById(Arg2.value + "H");
-                    var xL_Arg2 = document.getElementById(Arg2.value + "L");
-                    var xH_Arg1 = document.getElementById(Arg1.value + "H");
-                    var xL_Arg1 = document.getElementById(Arg1.value + "L");
-                    xH_Arg1.value = xH_Arg2.value;
-                    xL_Arg1.value = xL_Arg2.value;
+                    RAM_data_from_mark.value = Arg2_end_point.value;
+                    break;
+            }
+            return;
+        }
+
+        if (Arg2.value[0] == "[") {
+            for (const input of document.querySelectorAll("input.mark")) {
+                if (input.value.includes(Arg2.value.substring(1, Arg2.value.length - 1))) {
+                    var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
                 }
-                break;
-            case "SS" :
-            case "DS" :
-            case "CS" :
-            case "ES" :
-                console.log("SREG");
-                if (Arg1.value.length == 2) {
-                    var Arg2_end_point = document.getElementById(Arg2.value);
+            }
+            switch(Arg1.value){
+                case "AH": 
+                case "BH":
+                case "CH":
+                case "DH":
+                case "AL": 
+                case "BL":
+                case "CL":
+                case "DL":
                     var Arg1_end_point = document.getElementById(Arg1.value);
-                    Arg1_end_point.value = Arg2_end_point.value;//?
-                } else {
-                    var xH_Arg1 = document.getElementById(Arg1.value + "H");
-                    var xL_Arg1 = document.getElementById(Arg1.value + "L");
-                    xH_Arg1.value = Arg2.value.substring(0, Arg2.value.length - 3);
-                    xL_Arg1.value = Arg2.value.substring(Arg2.value.length - 3, Arg2.value.length);
-                }
-                break;
-            default:
-                switch(Arg2.value[0]){
-                    case "A" : 
-                    case "B" :
-                    case "C" :
-                    case "D" :
-                        console.log("REG1");
-                        if (Arg2.value.length == 2) {
+                    Arg1_end_point.value = RAM_data_from_mark.value;
+                    break;
+                case "Ax": 
+                case "Bx":
+                case "Cx":
+                case "Dx":
+                    var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                    var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                    xH_Arg1.value = RAM_data_from_mark.value.substring(0, RAM_data_from_mark.value.length - 3);
+                    xL_Arg1.value = RAM_data_from_mark.value.substring(RAM_data_from_mark.value.length - 3, RAM_data_from_mark.value.length);
+                    break;
+                case "Si":
+                case "Di":
+                case "BP":
+                case "SP":
+                case "IP":
+                    var Arg1_end_point = document.getElementById(Arg1.value);
+                    Arg1_end_point.value = RAM_data_from_mark.value;
+                    break;
+            }
+            return; 
+        }
+
+        switch(Arg1.value){
+            case "AH": 
+            case "BH":
+            case "CH":
+            case "DH":
+            case "AL": 
+            case "BL":
+            case "CL":
+            case "DL":
+                switch(Arg2.value){
+                    case "AH": 
+                    case "BH":
+                    case "CH":
+                    case "DH":
+                    case "AL": 
+                    case "BL":
+                    case "CL":
+                    case "DL":
+                        Data?.animate(frames21, config);
+                        setTimeout(() => {
                             var Arg2_end_point = document.getElementById(Arg2.value);
                             var Arg1_end_point = document.getElementById(Arg1.value);
                             Arg1_end_point.value = Arg2_end_point.value;
-                        } else {
-                            var xH_Arg2 = document.getElementById(Arg2.value + "H");
-                            var xL_Arg2 = document.getElementById(Arg2.value + "L");
-                            var xH_Arg1 = document.getElementById(Arg1.value + "H");
-                            var xL_Arg1 = document.getElementById(Arg1.value + "L");
-                            xH_Arg1.value = xH_Arg2.value;
-                            xL_Arg1.value = xL_Arg2.value;
-                        }
+                        }, duration);
                         break;
-                    case "[" : 
-                        for (const input of document.querySelectorAll("input.mark")) {
-                            if (input.value.includes(Arg2.value.substring(1, Arg2.value.length - 1))) {
-                                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
-                            }
-                        }
-                        if (Arg1.value.length == 2) {
-                            var Arg1_end_point = document.getElementById(Arg1.value);
-                            Arg1_end_point.value = RAM_data_from_mark.value;
-                        } else {
-                            var xH_Arg1 = document.getElementById(Arg1.value + "H");
-                            var xL_Arg1 = document.getElementById(Arg1.value + "L");
-                            xH_Arg1.value = RAM_data_from_mark.value.substring(0, RAM_data_from_mark.value.length - 3);
-                            xL_Arg1.value = RAM_data_from_mark.value.substring(RAM_data_from_mark.value.length - 3, RAM_data_from_mark.value.length);
-                        }
-                        break;
+
+
                     default:
-                        if (Arg1.value.length == 2) {
+                        Data?.animate(frames18, config);
+                        setTimeout(() => {
                             var Arg1_end_point = document.getElementById(Arg1.value);
-                            Arg1_end_point.value = Arg2.value;
-                        } else {
-                            var xH_Arg1 = document.getElementById(Arg1.value + "H");
-                            var xL_Arg1 = document.getElementById(Arg1.value + "L");
-                            xH_Arg1.value = Arg2.value.substring(0, Arg2.value.length - 3);
-                            xL_Arg1.value = Arg2.value.substring(Arg2.value.length - 3, Arg2.value.length);
-                        }
-                        console.log("число");
+                            Arg1_end_point.value =Arg2.value;
+                        }, duration);
                         break;
                 }
+                break;
+
+            case "Ax": 
+            case "Bx":
+            case "Cx":
+            case "Dx":
+                switch(Arg2.value){
+                    case "Ax": 
+                    case "Bx":
+                    case "Cx":
+                    case "Dx":
+                        var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                        var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                        var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                        var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                        xH_Arg1.value = xH_Arg2.value;
+                        xL_Arg1.value = xL_Arg2.value;
+                        break;
+                    case "Si":
+                    case "Di":
+                    case "BP":
+                    case "SP":
+                    case "IP":
+                        var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                        var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                        var Arg2_end_point = document.getElementById(Arg2.value);
+                        xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 3);
+                        xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 3, Arg2_end_point.value.length);
+                        break;
+
+                        
+                    case "SS":
+                    case "DS":
+                    case "CS":
+                    case "ES":
+                        var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                        var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                        var Arg2_end_point = document.getElementById(Arg2.value);
+                        xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 3);
+                        xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 3, Arg2_end_point.value.length);
+                        break;
+
+
+                    default:
+                        Data?.animate(frames18, config);
+                        setTimeout(() => {
+                            var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                            var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                            var Arg2_end_point = document.getElementById(Arg2.value);
+                            xH_Arg1.value = Arg2.value.substring(0, Arg2.value.length - 3);
+                            xL_Arg1.value = Arg2.value.substring(Arg2.value.length - 3, Arg2.value.length);
+                        }, duration);
+                        break;
+                }
+                break;
+
+            case "Si":
+            case "Di":
+            case "BP":
+            case "SP":
+            case "IP":
+                switch(Arg2.value){
+                    case "Ax": 
+                    case "Bx":
+                    case "Cx":
+                    case "Dx":
+                        var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                        var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                        var Arg1_end_point = document.getElementById(Arg1.value);
+                        Arg1_end_point.value = xH_Arg2.value + xL_Arg2.value;
+                        break;
+                    case "Si":
+                    case "Di":
+                    case "BP":
+                    case "SP":
+                    case "IP":
+                        var Arg2_end_point = document.getElementById(Arg2.value);
+                        var Arg1_end_point = document.getElementById(Arg1.value);
+                        Arg1_end_point.value = Arg2_end_point.value;
+                        break;
+
+                        
+                    case "SS":
+                    case "DS":
+                    case "CS":
+                    case "ES":
+                        var Arg2_end_point = document.getElementById(Arg2.value);
+                        var Arg1_end_point = document.getElementById(Arg1.value);
+                        Arg1_end_point.value = Arg2_end_point.value;
+                        break;
+
+
+                    default:
+                        var Arg1_end_point = document.getElementById(Arg1.value);
+                        Arg1_end_point.value =Arg2.value;
+                        break;
+                }
+                break;
+
+
+                
+            case "SS":
+            case "DS":
+            case "CS":
+            case "ES":
+                switch(Arg2.value){
+                    case "Ax": 
+                    case "Bx":
+                    case "Cx":
+                    case "Dx":
+                        var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                        var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                        var Arg1_end_point = document.getElementById(Arg1.value);
+                        Arg1_end_point.value = xH_Arg2.value + xL_Arg2.value;
+                        break;
+                    case "Si":
+                    case "Di":
+                    case "BP":
+                    case "SP":
+                    case "IP":
+                        var Arg2_end_point = document.getElementById(Arg2.value);
+                        var Arg1_end_point = document.getElementById(Arg1.value);
+                        Arg1_end_point.value = Arg2_end_point.value;
+                        break;
+                }
+                break;
         }
     }
 
@@ -679,40 +857,40 @@ const Program: FC = () => {
         var SM = document.getElementById("SM");
         var RK = document.getElementById("RK");
         setTimeout(() => {
-        Data?.animate(frames13, config);
-        setTimeout(() => {
-            Data?.animate(frames9, config); 
+            Data?.animate(frames13, config);
             setTimeout(() => {
-            if ("" != IP.value && "" !=CS.value) SM.value = Number(parseInt(IP.value, 16) + parseInt(CS.value, 16)).toString(16);//?
-            setTimeout(() => {
-                Data?.animate(frames19, config);
+                Data?.animate(frames9, config); 
                 setTimeout(() => {
-                Data?.animate(frames17, config);
+                if ("" != IP.value && "" !=CS.value) SM.value = Number(parseInt(IP.value, 16) + parseInt(CS.value, 16)).toString(16);//?
                 setTimeout(() => {
-                    var RAMcomand = document.getElementById(SM.value + "command");
-                        console.log(IP.value);
-                        console.log(parseInt(IP.value, 16));
-                        if ("" != IP.value)console.log(document.getElementById(IP.value + "command"));
-                        console.log(RAMcomand?.value);
-                    if (RAMcomand?.value == "----") RK.value = 0;
-                    else RK.value = Number(RAMcomand?.value).toString(16);
-                    IP.value = Number(parseInt(IP.value, 16) + 3).toString(16);
-                    switch(RK.value){
-                        case "1" : 
-                            MOV_comand();
-                            break;
-                        case "2" : 
-                            console.log("Доход равен 200");
-                            break;
-                        case "3" : 
-                            console.log("Доход равен 500");
-                            break;
-                    }
+                    Data?.animate(frames19, config);
+                    setTimeout(() => {
+                    Data?.animate(frames17, config);
+                    setTimeout(() => {
+                        var RAMcomand = document.getElementById(SM.value + "command");
+                            console.log(IP.value);
+                            console.log(parseInt(IP.value, 16));
+                            if ("" != IP.value)console.log(document.getElementById(IP.value + "command"));
+                            console.log(RAMcomand?.value);
+                        if (RAMcomand?.value == "----") RK.value = 0;
+                        else RK.value = Number(RAMcomand?.value).toString(16);
+                        IP.value = Number(parseInt(IP.value, 16) + 3).toString(16);
+                        switch(RK.value){
+                            case "1" : 
+                                MOV_comand();
+                                break;
+                            case "2" : 
+                                console.log("Доход равен 200");
+                                break;
+                            case "3" : 
+                                console.log("Доход равен 500");
+                                break;
+                        }
+                    }, duration);
+                    }, duration);
+                }, 100);
                 }, duration);
-                }, duration);
-            }, 100);
             }, duration);
-        }, duration);
         }, 1);
     }
 
