@@ -639,6 +639,7 @@ const Program: FC = () => {
         var SM = document.getElementById("SM");
         var Arg1 = document.getElementById(SM.value + "Arg1");
         var Arg2 = document.getElementById(SM.value + "Arg2");
+        var RK = document.getElementById("RK");
 
         if (Arg1.value[0] == "[") {
             for (const input of document.querySelectorAll("input.mark")) {
@@ -702,22 +703,30 @@ const Program: FC = () => {
                 case "BL":
                 case "CL":
                 case "DL":
-                    Data?.animate(frames18, config);
+                    Data?.animate(frames17, config);
                     setTimeout(() => {
-                        var Arg1_end_point = document.getElementById(Arg1.value);
-                        Arg1_end_point.value = RAM_data_from_mark.value;
+                        RK.value = RAM_data_from_mark.value;
+                        Data?.animate(frames6, config);
+                        setTimeout(() => {
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            Arg1_end_point.value = RAM_data_from_mark.value;
+                        }, duration);
                     }, duration);
                     break;
                 case "Ax": 
                 case "Bx":
                 case "Cx":
                 case "Dx":
-                    Data?.animate(frames18, config);
+                    Data?.animate(frames17, config);
                     setTimeout(() => {
-                        var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
-                        var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
-                        xH_Arg1.value = RAM_data_from_mark.value.substring(0, RAM_data_from_mark.value.length - 2);
-                        xL_Arg1.value = RAM_data_from_mark.value.substring(RAM_data_from_mark.value.length - 2, RAM_data_from_mark.value.length);
+                        RK.value = RAM_data_from_mark.value;
+                        Data?.animate(frames6, config);
+                        setTimeout(() => {
+                            var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                            var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                            xH_Arg1.value = RAM_data_from_mark.value.substring(0, RAM_data_from_mark.value.length - 2);
+                            xL_Arg1.value = RAM_data_from_mark.value.substring(RAM_data_from_mark.value.length - 2, RAM_data_from_mark.value.length);
+                        }, duration);
                     }, duration);
                     break;
                 case "Si":
@@ -725,10 +734,14 @@ const Program: FC = () => {
                 case "BP":
                 case "SP":
                 case "IP":
-                    Data?.animate(frames18, config);
+                    Data?.animate(frames17, config);
                     setTimeout(() => {
-                        var Arg1_end_point = document.getElementById(Arg1.value);
-                        Arg1_end_point.value = RAM_data_from_mark.value;
+                        RK.value = RAM_data_from_mark.value;
+                        Data?.animate(frames6, config);
+                        setTimeout(() => {
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            Arg1_end_point.value = RAM_data_from_mark.value;
+                        }, duration);
                     }, duration);
                     break;
             }
@@ -760,13 +773,31 @@ const Program: FC = () => {
                             Arg1_end_point.value = Arg2_end_point.value;
                         }, duration);
                         break;
+                    case "Ax": 
+                    case "Bx":
+                    case "Cx":
+                    case "Dx":
+                    case "Si":
+                    case "Di":
+                    case "BP":
+                    case "SP":
+                    case "IP":
+                    case "SS":
+                    case "DS":
+                    case "CS":
+                    case "ES":
+                        return;
 
 
                     default:
-                        Data?.animate(frames18, config);
+                        Data?.animate(frames17, config);
                         setTimeout(() => {
-                            var Arg1_end_point = document.getElementById(Arg1.value);
-                            Arg1_end_point.value =Arg2.value;
+                            RK.value = Arg2.value;
+                            Data?.animate(frames6, config);
+                            setTimeout(() => {
+                                var Arg1_end_point = document.getElementById(Arg1.value);
+                                Arg1_end_point.value =Arg2.value;
+                            }, duration);
                         }, duration);
                         break;
                 }
@@ -777,6 +808,16 @@ const Program: FC = () => {
             case "Cx":
             case "Dx":
                 switch(Arg2.value){
+                    case "AH": 
+                    case "BH":
+                    case "CH":
+                    case "DH":
+                    case "AL": 
+                    case "BL":
+                    case "CL":
+                    case "DL":
+                        return;
+
                     case "Ax": 
                     case "Bx":
                     case "Cx":
@@ -823,13 +864,17 @@ const Program: FC = () => {
 
 
                     default:
-                        Data?.animate(frames18, config);
+                        Data?.animate(frames17, config);
                         setTimeout(() => {
-                            var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
-                            var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
-                            var Arg2_end_point = document.getElementById(Arg2.value);
-                            xH_Arg1.value = Arg2.value.substring(0, Arg2.value.length - 2);
-                            xL_Arg1.value = Arg2.value.substring(Arg2.value.length - 2, Arg2.value.length);
+                            RK.value = Arg2.value;
+                            Data?.animate(frames6, config);
+                            setTimeout(() => {
+                                var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                                var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                                var Arg2_end_point = document.getElementById(Arg2.value);
+                                xH_Arg1.value = Arg2.value.substring(0, Arg2.value.length - 2);
+                                xL_Arg1.value = Arg2.value.substring(Arg2.value.length - 2, Arg2.value.length);
+                            }, duration);
                         }, duration);
                         break;
                 }
@@ -841,6 +886,16 @@ const Program: FC = () => {
             case "SP":
             case "IP":
                 switch(Arg2.value){
+                    case "AH": 
+                    case "BH":
+                    case "CH":
+                    case "DH":
+                    case "AL": 
+                    case "BL":
+                    case "CL":
+                    case "DL":
+                        return;
+
                     case "Ax": 
                     case "Bx":
                     case "Cx":
@@ -881,10 +936,14 @@ const Program: FC = () => {
 
 
                     default:
-                        Data?.animate(frames18, config);
+                        Data?.animate(frames17, config);
                         setTimeout(() => {
-                            var Arg1_end_point = document.getElementById(Arg1.value);
-                            Arg1_end_point.value =Arg2.value;
+                            RK.value = Arg2.value;
+                            Data?.animate(frames6, config);
+                            setTimeout(() => {
+                                var Arg1_end_point = document.getElementById(Arg1.value);
+                                Arg1_end_point.value =Arg2.value;
+                            }, duration);
                         }, duration);
                         break;
                 }
