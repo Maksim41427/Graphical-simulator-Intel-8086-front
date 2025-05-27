@@ -2,7 +2,7 @@ import { createRef, type FC } from "react";
 import { Table } from "react-bootstrap";
 
 const Program: FC = () => {
-  const duration = 5500;
+  const duration = 5500/2;
   const config = {    
     duration: duration, // время анимации в миллисекундах
     easing: "linear", // поведение анимации(замедление в начале и в конце)
@@ -559,6 +559,50 @@ const Program: FC = () => {
       offset: 1    
   }];
 
+  const frames22 = [{ //3 от SREG к АЛУ 1вход
+      marginTop: "108px",
+      marginLeft: "480px",
+      background: "#15ff43",      
+      offset: 0    
+  },{      
+      marginTop: "108px",
+      marginLeft: "420px",
+      background: "#15ff43",   
+      offset: 0.33    
+  },{      
+      marginTop: "280px",
+      marginLeft: "420px",
+      background: "#15ff43",    
+      offset: 0.66    
+  },{      
+      marginTop: "280px",
+      marginLeft: "220px",
+      background: "#15ff43",   
+      offset: 1    
+  }];
+
+  const frames23 = [{ //3 от SREG к АЛУ 2вход
+      marginTop: "108px",
+      marginLeft: "480px",
+      background: "#15ff43",      
+      offset: 0    
+  },{      
+      marginTop: "108px",
+      marginLeft: "420px",
+      background: "#15ff43",   
+      offset: 0.33    
+  },{      
+      marginTop: "201px",
+      marginLeft: "420px",
+      background: "#15ff43",    
+      offset: 0.66    
+  },{      
+      marginTop: "201px",
+      marginLeft: "220px",
+      background: "#15ff43",   
+      offset: 1    
+  }];
+
     var rows_size = 3, rows = [];
     rows = [
         { address: "0", data: "", mark: "", command: "----", arg1:"", arg2:""}
@@ -567,7 +611,7 @@ const Program: FC = () => {
     while(rows_size <= 255) {
         rows.push({ address: Number(rows_size).toString(16), data: "", mark: "", command: "----", arg1:"", arg2:""}); 
         rows_size = rows_size + 3;
-        console.log(rows);
+        // console.log(rows);
     }
 
     setTimeout(() => {
@@ -592,8 +636,6 @@ const Program: FC = () => {
 
     function MOV_comand() {
         var Data = document.getElementById("Data");
-        var IP = document.getElementById("IP");
-        var CS = document.getElementById("CS");
         var SM = document.getElementById("SM");
         var Arg1 = document.getElementById(SM.value + "Arg1");
         var Arg2 = document.getElementById(SM.value + "Arg2");
@@ -674,8 +716,8 @@ const Program: FC = () => {
                     setTimeout(() => {
                         var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
                         var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
-                        xH_Arg1.value = RAM_data_from_mark.value.substring(0, RAM_data_from_mark.value.length - 3);
-                        xL_Arg1.value = RAM_data_from_mark.value.substring(RAM_data_from_mark.value.length - 3, RAM_data_from_mark.value.length);
+                        xH_Arg1.value = RAM_data_from_mark.value.substring(0, RAM_data_from_mark.value.length - 2);
+                        xL_Arg1.value = RAM_data_from_mark.value.substring(RAM_data_from_mark.value.length - 2, RAM_data_from_mark.value.length);
                     }, duration);
                     break;
                 case "Si":
@@ -759,8 +801,8 @@ const Program: FC = () => {
                             var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
                             var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                             var Arg2_end_point = document.getElementById(Arg2.value);
-                            xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 3);
-                            xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 3, Arg2_end_point.value.length);
+                            xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 2);
+                            xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 2, Arg2_end_point.value.length);
                         }, duration);
                         break;
 
@@ -774,8 +816,8 @@ const Program: FC = () => {
                             var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
                             var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                             var Arg2_end_point = document.getElementById(Arg2.value);
-                            xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 3);
-                            xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 3, Arg2_end_point.value.length);
+                            xH_Arg1.value = Arg2_end_point.value.substring(0, Arg2_end_point.value.length - 2);
+                            xL_Arg1.value = Arg2_end_point.value.substring(Arg2_end_point.value.length - 2, Arg2_end_point.value.length);
                         }, duration);
                         break;
 
@@ -786,8 +828,8 @@ const Program: FC = () => {
                             var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
                             var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                             var Arg2_end_point = document.getElementById(Arg2.value);
-                            xH_Arg1.value = Arg2.value.substring(0, Arg2.value.length - 3);
-                            xL_Arg1.value = Arg2.value.substring(Arg2.value.length - 3, Arg2.value.length);
+                            xH_Arg1.value = Arg2.value.substring(0, Arg2.value.length - 2);
+                            xL_Arg1.value = Arg2.value.substring(Arg2.value.length - 2, Arg2.value.length);
                         }, duration);
                         break;
                 }
@@ -884,6 +926,600 @@ const Program: FC = () => {
         }
     }
 
+    function ADD_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var RK = document.getElementById("RK");
+        var АЛУ = document.getElementById("АЛУ");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+        var o = document.getElementById("o");
+        var s = document.getElementById("s");
+        var z = document.getElementById("z");
+        var c = document.getElementById("c");
+        var buffer = "";
+        //готово кроме анимаций и "прерываний" SM.value = Number(parseInt(IP.value, 16) + parseInt(CS.value, 16)).toString(16);
+
+        //??????
+        if (Arg1.value[0] == "[") {
+            for (const input of document.querySelectorAll("input.mark")) {
+                if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                    var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+                }
+            }
+
+            if (Arg2.value[0] == "[" || Arg2.value == "SS" || Arg2.value == "DS" || Arg2.value == "CS" || Arg2.value == "ES") return;
+
+            
+            Data?.animate(frames17, config);
+            setTimeout(() => {
+                switch(Arg2.value){
+                    case "AH": 
+                    case "BH":
+                    case "CH":
+                    case "DH":
+                    case "AL": 
+                    case "BL":
+                    case "CL":
+                    case "DL":
+                        var Arg2_end_point = document.getElementById(Arg2.value);
+                        RK.value = RAM_data_from_mark.value;
+                        Data?.animate(frames4, config);
+                        setTimeout(() => {
+                            Data?.animate(frames11, config);
+                            setTimeout(() => {
+                                buffer = Number(parseInt(RAM_data_from_mark.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    // if (buffer == "0") c.value = "1"; else c.value = "0";
+                                    Data?.animate(frames3, config);
+                                    setTimeout(() => {
+                                        RAM_data_from_mark.value = buffer;
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                    case "Ax": 
+                    case "Bx":
+                    case "Cx":
+                    case "Dx":
+                        var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                        var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                        RK.value = RAM_data_from_mark.value;
+                        Data?.animate(frames4, config);
+                        setTimeout(() => {
+                            Data?.animate(frames11, config);
+                            setTimeout(() => {
+                                buffer = Number(parseInt(RAM_data_from_mark.value, 16) + parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames3, config);
+                                    setTimeout(() => {
+                                        RAM_data_from_mark.value = buffer;
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                    case "Si":
+                    case "Di":
+                    case "BP":
+                    case "SP":
+                    case "IP":
+                        var Arg2_end_point = document.getElementById(Arg2.value);
+                        RK.value = RAM_data_from_mark.value;
+                        Data?.animate(frames4, config);
+                        setTimeout(() => {
+                            Data?.animate(frames11, config);
+                            setTimeout(() => {
+                                buffer = Number(parseInt(RAM_data_from_mark.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames3, config);
+                                    setTimeout(() => {
+                                        RAM_data_from_mark.value = buffer;
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                    case "SS":
+                    case "DS":
+                    case "CS":
+                    case "ES":
+                        return;
+                    default:
+                        RK.value = RAM_data_from_mark.value;
+                        Data?.animate(frames4, config);
+                        setTimeout(() => {
+                            Data?.animate(frames17, config);
+                            setTimeout(() => {
+                                RK.value = Arg2.value;
+                                Data?.animate(frames5, config);
+                                setTimeout(() => {
+                                    buffer = Number(parseInt(RAM_data_from_mark.value, 16) + parseInt(Arg2.value, 16)).toString(16);
+                                    АЛУ.value = buffer;
+                                    Data?.animate(frames1, config);
+                                    setTimeout(() => {
+                                        if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                        if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                        if (buffer == "0") z.value = "1"; else z.value = "0";
+                                        Data?.animate(frames3, config);
+                                        setTimeout(() => {
+                                            RAM_data_from_mark.value = buffer;
+                                        }, duration);
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                }
+            }, duration);
+            return;
+        }
+
+        if (Arg2.value[0] == "[") {
+            for (const input of document.querySelectorAll("input.mark")) {
+                if (input.value.includes(Arg2.value.substring(1, Arg2.value.length - 1))) {
+                    var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+                }
+            }
+
+            if (Arg1.value[0] == "[") return;
+
+            switch(Arg1.value){
+                case "AH": 
+                case "BH":
+                case "CH":
+                case "DH":
+                case "AL": 
+                case "BL":
+                case "CL":
+                case "DL":
+                    Data?.animate(frames10, config);
+                    setTimeout(() => {
+                        Data?.animate(frames17, config);
+                        setTimeout(() => {
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            RK.value = RAM_data_from_mark.value;
+                            Data?.animate(frames5, config);
+                            setTimeout(() => {
+                                buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        Arg1_end_point.value = buffer;
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                    break;
+                case "Ax": 
+                case "Bx":
+                case "Cx":
+                case "Dx":
+                    Data?.animate(frames10, config);
+                    setTimeout(() => {
+                        Data?.animate(frames17, config);
+                        setTimeout(() => {
+                            var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                            var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                            RK.value = RAM_data_from_mark.value;
+                            Data?.animate(frames5, config);
+                            setTimeout(() => { 
+                                buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        xH_Arg1.value = buffer.substring(0, buffer.length - 2);
+                                        xL_Arg1.value = buffer.substring(buffer.length - 2, buffer.length);
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                    break;
+                case "Si":
+                case "Di":
+                case "BP":
+                case "SP":
+                case "IP":
+                    Data?.animate(frames10, config);
+                    setTimeout(() => {
+                        Data?.animate(frames17, config);
+                        setTimeout(() => {
+                            var Arg1_end_point = document.getElementById(Arg1.value);
+                            RK.value = RAM_data_from_mark.value;
+                            Data?.animate(frames5, config);
+                            setTimeout(() => {
+                                buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        Arg1_end_point.value = buffer;
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                    break;
+            }
+            return; 
+        }
+
+        switch(Arg1.value){
+            case "AH": 
+            case "BH":
+            case "CH":
+            case "DH":
+            case "AL": 
+            case "BL":
+            case "CL":
+            case "DL":
+                switch(Arg2.value){
+                    case "AH": 
+                    case "BH":
+                    case "CH":
+                    case "DH":
+                    case "AL": 
+                    case "BL":
+                    case "CL":
+                    case "DL":
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames11, config);
+                            setTimeout(() => {
+                                var Arg2_end_point = document.getElementById(Arg2.value);
+                                var Arg1_end_point = document.getElementById(Arg1.value);
+                                buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        Arg1_end_point.value = buffer;
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                    
+                    case "Ax": 
+                    case "Bx":
+                    case "Cx":
+                    case "Dx":
+                    case "Si":
+                    case "Di":
+                    case "BP":
+                    case "SP":
+                    case "IP":
+                    case "SS":
+                    case "DS":
+                    case "CS":
+                    case "ES":
+                        return;
+
+                    default:
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames17, config);
+                            setTimeout(() => {
+                                var Arg1_end_point = document.getElementById(Arg1.value);
+                                RK.value = Arg2.value;
+                                Data?.animate(frames5, config);
+                                setTimeout(() => {
+                                    buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2.value, 16)).toString(16);
+                                    АЛУ.value = buffer;
+                                    Data?.animate(frames1, config);
+                                    setTimeout(() => {
+                                        if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                        if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                        if (buffer == "0") z.value = "1"; else z.value = "0";
+                                        Data?.animate(frames2, config);
+                                        setTimeout(() => {
+                                            Arg1_end_point.value = buffer;
+                                        }, duration);
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                }
+                break;
+
+            case "Ax":
+            case "Bx":
+            case "Cx":
+            case "Dx":
+                switch(Arg2.value){
+                    case "AH": 
+                    case "BH":
+                    case "CH":
+                    case "DH":
+                    case "AL": 
+                    case "BL":
+                    case "CL":
+                    case "DL":
+                        return;
+                    case "Ax": 
+                    case "Bx":
+                    case "Cx":
+                    case "Dx":
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames11, config);
+                            setTimeout(() => {
+                                var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                                var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                                var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                                var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                                buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        xH_Arg1.value = buffer.substring(0, buffer.length - 2);
+                                        xL_Arg1.value = buffer.substring(buffer.length - 2, buffer.length);
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                    case "Si":
+                    case "Di":
+                    case "BP":
+                    case "SP":
+                    case "IP":
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames11, config);
+                            setTimeout(() => {
+                                var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                                var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                                var Arg2_end_point = document.getElementById(Arg2.value);
+                                buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        xH_Arg1.value = buffer.substring(0, buffer.length - 2);
+                                        xL_Arg1.value = buffer.substring(buffer.length - 2, buffer.length);
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+
+                        
+                    case "SS":
+                    case "DS":
+                    case "CS":
+                    case "ES"://///????
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames23, config);
+                            setTimeout(() => {
+                                var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                                var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                                var Arg2_end_point = document.getElementById(Arg2.value);
+                                buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        xH_Arg1.value = buffer.substring(0, buffer.length - 2);
+                                        xL_Arg1.value = buffer.substring(buffer.length - 2, buffer.length);
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+
+
+                    default:
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames17, config);
+                            setTimeout(() => {
+                                var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                                var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                                RK.value = Arg2.value;
+                                Data?.animate(frames5, config);
+                                setTimeout(() => {
+                                    buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(Arg2.value, 16)).toString(16);
+                                    АЛУ.value = buffer;
+                                    Data?.animate(frames1, config);
+                                    setTimeout(() => {
+                                        if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                        if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                        if (buffer == "0") z.value = "1"; else z.value = "0";
+                                        Data?.animate(frames2, config);
+                                        setTimeout(() => {
+                                            xH_Arg1.value = buffer.substring(0, buffer.length - 2);
+                                            xL_Arg1.value = buffer.substring(buffer.length - 2, buffer.length);
+                                        }, duration);
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                }
+                break;
+
+            case "Si":
+            case "Di":
+            case "BP":
+            case "SP":
+            case "IP":
+                switch(Arg2.value){
+                    case "AH": 
+                    case "BH":
+                    case "CH":
+                    case "DH":
+                    case "AL": 
+                    case "BL":
+                    case "CL":
+                    case "DL":
+                        return;
+                    case "Ax": 
+                    case "Bx":
+                    case "Cx":
+                    case "Dx":
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames11, config);
+                            setTimeout(() => {
+                                var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
+                                var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
+                                var Arg1_end_point = document.getElementById(Arg1.value);
+                                buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        Arg1_end_point.value = buffer;
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                    case "Si":
+                    case "Di":
+                    case "BP":
+                    case "SP":
+                    case "IP":
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames11, config);
+                            setTimeout(() => {
+                                var Arg2_end_point = document.getElementById(Arg2.value);
+                                var Arg1_end_point = document.getElementById(Arg1.value);
+                                buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        Arg1_end_point.value = buffer;
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+
+                    case "SS":
+                    case "DS":
+                    case "CS":
+                    case "ES"://///????
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames23, config);
+                            setTimeout(() => {
+                                var Arg1_end_point = document.getElementById(Arg1.value);
+                                var Arg2_end_point = document.getElementById(Arg2.value);
+                                buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
+                                АЛУ.value = buffer;
+                                Data?.animate(frames1, config);
+                                setTimeout(() => {
+                                    if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                    if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                    if (buffer == "0") z.value = "1"; else z.value = "0";
+                                    Data?.animate(frames2, config);
+                                    setTimeout(() => {
+                                        Arg1_end_point.value = buffer;
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+
+
+                    default:
+                        Data?.animate(frames10, config);
+                        setTimeout(() => {
+                            Data?.animate(frames17, config);
+                            setTimeout(() => {
+                                var Arg1_end_point = document.getElementById(Arg1.value);
+                                RK.value = Arg2.value;
+                                Data?.animate(frames5, config);
+                                setTimeout(() => {
+                                    buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2.value, 16)).toString(16);
+                                    АЛУ.value = buffer;
+                                    Data?.animate(frames1, config);
+                                    setTimeout(() => {
+                                        if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                        if (parseInt(buffer[0], 16) >= 8) { s.value = "1"; } else s.value = "0";//?
+                                        if (buffer == "0") z.value = "1"; else z.value = "0";
+                                        Data?.animate(frames2, config);
+                                        setTimeout(() => {
+                                            Arg1_end_point.value = buffer;
+                                        }, duration);
+                                    }, duration);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                        break;
+                }
+        }
+    }
+
+    function c3_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+    }
 
     function nulls(lengtht :number) {
         var nulls:String = "";
@@ -913,10 +1549,10 @@ const Program: FC = () => {
                     Data?.animate(frames17, config);
                     setTimeout(() => {
                         var RAMcomand = document.getElementById(SM.value + "command");
-                            console.log(IP.value);
-                            console.log(parseInt(IP.value, 16));
-                            if ("" != IP.value)console.log(document.getElementById(IP.value + "command"));
-                            console.log(RAMcomand?.value);
+                            // console.log(IP.value);
+                            // console.log(parseInt(IP.value, 16));
+                            // if ("" != IP.value)console.log(document.getElementById(IP.value + "command"));
+                            // console.log(RAMcomand?.value);
                         if (RAMcomand?.value == "----") RK.value = 0;
                         else RK.value = Number(RAMcomand?.value).toString(16);
                         IP.value = Number(parseInt(IP.value, 16) + 3).toString(16);
@@ -925,10 +1561,10 @@ const Program: FC = () => {
                                 MOV_comand();
                                 break;
                             case "2" : 
-                                console.log("Доход равен 200");
+                                ADD_comand();
                                 break;
                             case "3" : 
-                                console.log("Доход равен 500");
+                                c3_comand();
                                 break;
                         }
                     }, duration);
@@ -967,6 +1603,7 @@ const Program: FC = () => {
                             <select id= {row.address + "command"} defaultValue ={row.command}>
                             <option disabled selected>----</option>
                             <option value="1">MOV</option>
+                            <option value="2">ADD</option>
                             </select>
                             <td><input id= {row.address + "Arg1"} type="text" style={{width: 50, textAlign: 'center', border: '2px black solid'}} defaultValue ={row.arg1}/></td>
                             <td><input id= {row.address + "Arg2"} type="text" style={{width: 50, textAlign: 'center', border: '2px black solid'}} defaultValue ={row.arg2}/></td>
@@ -1010,10 +1647,10 @@ const Program: FC = () => {
             <div className="z" style={{width: 26, height: 26, left: 132, top: 80, position: 'absolute', textAlign: 'center', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>z</div>
             <div className="c" style={{width: 26, height: 26, left: 162, top: 80, position: 'absolute', textAlign: 'center', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>c</div>
             <div className="РФf" style={{width: 104, height: 26, left: 68, top: 111, position: 'absolute'}}>
-                <input type="text" placeholder="o" id ="o" style={{width: 26, height: 26, left: 0, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
-                <input type="text" placeholder="s" id ="s" style={{width: 26, height: 26,left: 30, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
-                <input type="text" placeholder="z" id ="z" style={{width: 26, height: 26, left: 60, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
-                <input type="text" placeholder="c" id ="c" style={{width: 26, height: 26,left: 90, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
+                <input type="text" placeholder="o" id ="o" defaultValue ="0" style={{width: 26, height: 26, left: 0, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
+                <input type="text" placeholder="s" id ="s" defaultValue ="0" style={{width: 26, height: 26,left: 30, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
+                <input type="text" placeholder="z" id ="z" defaultValue ="0" style={{width: 26, height: 26, left: 60, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
+                <input type="text" placeholder="c" id ="c" defaultValue ="0" style={{width: 26, height: 26,left: 90, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
             </div>
             <div className="АЛУ" style={{ zIndex: 1, width: 72, height: 52, left: 172, top: 330, position: 'absolute', textAlign: 'center', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 28, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>АЛУ</div>
             <div data-svg-wrapper data-layer="Rectangle 27" className="Rectangle27" style={{ zIndex: 1, left: 172, top: 160, position: 'absolute'}}>
