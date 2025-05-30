@@ -2200,6 +2200,222 @@ const Program: FC = () => {
         }, duration);
     }
 
+    function jc_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var c = document.getElementById("c");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (c.value == "0") return;
+        c.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                c.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jnc_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var c = document.getElementById("c");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (c.value == "1") return;
+        c.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                c.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jz_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var z = document.getElementById("z");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (z.value == "0") return;
+        z.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                z.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jnz_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var z = document.getElementById("z");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (z.value == "1") return;
+        z.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                z.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function js_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (s.value == "0") return;
+        s.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jns_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (s.value == "1") return;
+        s.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jo_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (o.value == "0") return;
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jno_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (o.value == "1") return;
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
     function nulls(lengtht :number) {
         var nulls:String = "";
 
@@ -2248,6 +2464,9 @@ const Program: FC = () => {
                             case "4" :
                                 JMP_comand();
                                 break;
+                            case "5" :
+                                jc_comand();
+                                break;
                         }
                     }, duration);
                     }, duration);
@@ -2288,6 +2507,7 @@ const Program: FC = () => {
                             <option value="2">ADD</option>
                             <option value="3">SUB</option>
                             <option value="4">JMP</option>
+                            <option value="5">jc</option>
                             </select>
                             <td><input id= {row.address + "Arg1"} type="text" style={{width: 50, textAlign: 'center', border: '2px black solid'}} defaultValue ={row.arg1}/></td>
                             <td><input id= {row.address + "Arg2"} type="text" style={{width: 50, textAlign: 'center', border: '2px black solid'}} defaultValue ={row.arg2}/></td>
