@@ -1615,7 +1615,8 @@ const Program: FC = () => {
                         setTimeout(() => {
                             Data?.animate(frames11, config);
                             setTimeout(() => {
-                                buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                if (parseInt(RAM_data_from_mark.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(255 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -1642,7 +1643,8 @@ const Program: FC = () => {
                         setTimeout(() => {
                             Data?.animate(frames11, config);
                             setTimeout(() => {
-                                buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
+                                if (parseInt(RAM_data_from_mark.value, 16) < parseInt(xH_Arg2.value + xL_Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
+                                else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -1668,7 +1670,8 @@ const Program: FC = () => {
                         setTimeout(() => {
                             Data?.animate(frames11, config);
                             setTimeout(() => {
-                                buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                if (parseInt(RAM_data_from_mark.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -1697,7 +1700,8 @@ const Program: FC = () => {
                                 RK.value = Arg2.value;
                                 Data?.animate(frames5, config);
                                 setTimeout(() => {
-                                    buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2.value, 16)).toString(16);
+                                    if (parseInt(RAM_data_from_mark.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2.value, 16)).toString(16);
+                                    else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     АЛУ.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
@@ -1744,7 +1748,8 @@ const Program: FC = () => {
                             RK.value = RAM_data_from_mark.value;
                             Data?.animate(frames5, config);
                             setTimeout(() => {
-                                buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                                if (parseInt(Arg1_end_point.value, 16) < parseInt(RAM_data_from_mark.value, 16)) buffer = Number(255 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                                else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -1773,7 +1778,8 @@ const Program: FC = () => {
                             RK.value = RAM_data_from_mark.value;
                             Data?.animate(frames5, config);
                             setTimeout(() => { 
-                                buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                                if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(RAM_data_from_mark.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                                else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -1803,7 +1809,8 @@ const Program: FC = () => {
                             RK.value = RAM_data_from_mark.value;
                             Data?.animate(frames5, config);
                             setTimeout(() => {
-                                buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                                if (parseInt(Arg1_end_point.value, 16) < parseInt(RAM_data_from_mark.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                                else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -1847,7 +1854,8 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 var Arg1_end_point = document.getElementById(Arg1.value);
-                                buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(255 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -1887,7 +1895,8 @@ const Program: FC = () => {
                                 RK.value = Arg2.value;
                                 Data?.animate(frames5, config);
                                 setTimeout(() => {
-                                    buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
+                                    if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(255 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
+                                    else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     АЛУ.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
@@ -1932,7 +1941,8 @@ const Program: FC = () => {
                                 var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
                                 var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
                                 var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
-                                buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
+                                if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(xH_Arg2.value + xL_Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
+                                else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -1960,7 +1970,8 @@ const Program: FC = () => {
                                 var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
                                 var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                                 var Arg2_end_point = document.getElementById(Arg2.value);
-                                buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -1989,7 +2000,8 @@ const Program: FC = () => {
                                 var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
                                 var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                                 var Arg2_end_point = document.getElementById(Arg2.value);
-                                buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -2017,7 +2029,8 @@ const Program: FC = () => {
                                 RK.value = Arg2.value;
                                 Data?.animate(frames5, config);
                                 setTimeout(() => {
-                                    buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2.value, 16)).toString(16);
+                                    if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2.value, 16)).toString(16);
+                                    else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     АЛУ.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
@@ -2063,7 +2076,8 @@ const Program: FC = () => {
                                 var xH_Arg2 = document.getElementById(Arg2.value[0] + "H");
                                 var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
                                 var Arg1_end_point = document.getElementById(Arg1.value);
-                                buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
+                                if (parseInt(Arg1_end_point.value, 16) < parseInt(xH_Arg2.value + xL_Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
+                                else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -2089,7 +2103,8 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 var Arg1_end_point = document.getElementById(Arg1.value);
-                                buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -2115,7 +2130,8 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 var Arg2_end_point = document.getElementById(Arg2.value);
-                                buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
+                                else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 АЛУ.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
@@ -2141,7 +2157,8 @@ const Program: FC = () => {
                                 RK.value = Arg2.value;
                                 Data?.animate(frames5, config);
                                 setTimeout(() => {
-                                    buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
+                                    if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
+                                    else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     АЛУ.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
