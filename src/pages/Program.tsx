@@ -2746,7 +2746,7 @@ const Program: FC = () => {
             }
         }
 
-        if (c.value == "0") return;
+        if (!(c.value == "1")) return;
         c.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
@@ -2773,7 +2773,7 @@ const Program: FC = () => {
             }
         }
 
-        if (c.value == "1") return;
+        if (!(c.value == "0")) return;
         c.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
@@ -2800,7 +2800,7 @@ const Program: FC = () => {
             }
         }
 
-        if (z.value == "0") return;
+        if (!(z.value == "1")) return;
         z.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
@@ -2827,7 +2827,7 @@ const Program: FC = () => {
             }
         }
 
-        if (z.value == "1") return;
+        if (!(z.value == "0")) return;
         z.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
@@ -2854,7 +2854,7 @@ const Program: FC = () => {
             }
         }
 
-        if (s.value == "0") return;
+        if (!(s.value == "1")) return;
         s.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
@@ -2881,7 +2881,7 @@ const Program: FC = () => {
             }
         }
 
-        if (s.value == "1") return;
+        if (!(s.value == "0")) return;
         s.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
@@ -2908,7 +2908,7 @@ const Program: FC = () => {
             }
         }
 
-        if (o.value == "0") return;
+        if (!(o.value == "1")) return;
         o.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
@@ -2935,7 +2935,7 @@ const Program: FC = () => {
             }
         }
 
-        if (o.value == "1") return;
+        if (!(o.value == "0")) return;
         o.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
@@ -2953,6 +2953,7 @@ const Program: FC = () => {
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
         var c = document.getElementById("c");
+        var z = document.getElementById("z");
         var Arg1 = document.getElementById(SM.value + "Arg1");
         var Arg2 = document.getElementById(SM.value + "Arg2");
 
@@ -2962,8 +2963,9 @@ const Program: FC = () => {
             }
         }
 
-        if (c.value == "0") return;
+        if (!(c.value == "0" && z.value == "0")) return;
         c.style.background = '#15ff43';
+        z.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
             RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
@@ -2971,11 +2973,42 @@ const Program: FC = () => {
             setTimeout(() => {
                 IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
                 c.style.background = 'white';
+                z.style.background = 'white';
             }, duration);
         }, duration);
     }
 
     function jna_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var c = document.getElementById("c");
+        var z = document.getElementById("z");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(c.value == "1" || z.value == "1")) return;
+        c.style.background = '#15ff43';
+        z.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                c.style.background = 'white';
+                z.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jb_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2989,7 +3022,7 @@ const Program: FC = () => {
             }
         }
 
-        if (c.value == "1") return;
+        if (!(c.value == "1")) return;
         c.style.background = '#15ff43';
         Data?.animate(frames17, config);
         setTimeout(() => {
@@ -2998,6 +3031,453 @@ const Program: FC = () => {
             setTimeout(() => {
                 IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
                 c.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jnb_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var c = document.getElementById("c");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(c.value == "0")) return;
+        c.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                c.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jae_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var c = document.getElementById("c");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(c.value == "0")) return;
+        c.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                c.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jnae_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var c = document.getElementById("c");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(c.value == "1")) return;
+        c.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                c.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jbe_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var c = document.getElementById("c");
+        var z = document.getElementById("z");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(c.value == "1" || z.value == "1")) return;
+        c.style.background = '#15ff43';
+        z.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                c.style.background = 'white';
+                z.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jnbe_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var c = document.getElementById("c");
+        var z = document.getElementById("z");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(c.value == "0" && z.value == "0")) return;
+        c.style.background = '#15ff43';
+        z.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                c.style.background = 'white';
+                z.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jg_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var z = document.getElementById("z");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(s.value == o && z.value == "0")) return;
+        s.style.background = '#15ff43';
+        z.style.background = '#15ff43';
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+                z.style.background = 'white';
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jng_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var z = document.getElementById("z");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(s.value != o && z.value == "1")) return;
+        s.style.background = '#15ff43';
+        z.style.background = '#15ff43';
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+                z.style.background = 'white';
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jl_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(s.value != o)) return;
+        s.style.background = '#15ff43';
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jnl_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(s.value == o)) return;
+        s.style.background = '#15ff43';
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jge_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(s.value == o)) return;
+        s.style.background = '#15ff43';
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jnge_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(s.value != o)) return;
+        s.style.background = '#15ff43';
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jle_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var z = document.getElementById("z");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(s.value != o || z.value == "1")) return;
+        s.style.background = '#15ff43';
+        z.style.background = '#15ff43';
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+                z.style.background = 'white';
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jnle_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var s = document.getElementById("s");
+        var z = document.getElementById("z");
+        var o = document.getElementById("o");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(s.value == o && z.value == "0")) return;
+        s.style.background = '#15ff43';
+        z.style.background = '#15ff43';
+        o.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                s.style.background = 'white';
+                z.style.background = 'white';
+                o.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function je_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var z = document.getElementById("z");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(z.value == "1")) return;
+        z.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                z.style.background = 'white';
+            }, duration);
+        }, duration);
+    }
+
+    function jne_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var IP = document.getElementById("IP");
+        var z = document.getElementById("z");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+
+        for (const input of document.querySelectorAll("input.mark")) {
+            if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+            }
+        }
+
+        if (!(z.value == "0")) return;
+        z.style.background = '#15ff43';
+        Data?.animate(frames17, config);
+        setTimeout(() => {
+            RK.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+            Data?.animate(frames6, config);
+            setTimeout(() => {
+                IP.value = RAM_data_from_mark.id.substring(0, RAM_data_from_mark.id.length - 4);
+                z.style.background = 'white';
             }, duration);
         }, duration);
     }
