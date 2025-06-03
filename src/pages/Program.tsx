@@ -15,7 +15,7 @@ const Program: FC = () => {
     iterations: 1,
   };
 
-  const frames1 = [{ //2 от АЛУ к РФ
+  const frames1 = [{ //2 от ALU к RF
       marginTop: "217px", //left: 173, top: 481-243 454
       marginLeft: "157px",
       background: "#15ff43",      
@@ -32,7 +32,7 @@ const Program: FC = () => {
       offset: 1    
   }];
 
-  const frames2 = [{ //5 от АЛУ к REG
+  const frames2 = [{ //5 от ALU к REG
       marginTop: "267px", //left: 173, top: 481-243 454
       marginLeft: "157px",
       background: "#15ff43",      
@@ -64,7 +64,7 @@ const Program: FC = () => {
       offset: 1    
   }];
   
-  const frames3 = [{ //7 от АЛУ к RAM
+  const frames3 = [{ //7 от ALU к RAM
       marginTop: "267px", //left: 173, top: 481-243 454
       marginLeft: "157px",
       background: "#15ff43",      
@@ -106,7 +106,7 @@ const Program: FC = () => {
       offset: 1    
   }];
 
-  const frames4 = [{ //4 от RK к АЛУ 1вход
+  const frames4 = [{ //4 от RK к ALU 1вход
       marginTop: "444px", //left: 173, top: 481-243 454
       marginLeft: "329px",
       background: "#15ff43",      
@@ -133,7 +133,7 @@ const Program: FC = () => {
       offset: 1    
   }];
 
-  const frames5 = [{ //4 от RK к АЛУ 2вход
+  const frames5 = [{ //4 от RK к ALU 2вход
       marginTop: "444px", //left: 173, top: 481-243 454
       marginLeft: "329px",
       background: "#15ff43",      
@@ -253,7 +253,7 @@ const Program: FC = () => {
       offset: 1    
   }];
 
-  const frames10 = [{ //3 от REG к АЛУ 1вход
+  const frames10 = [{ //3 от REG к ALU 1вход
       marginTop: "340px",
       marginLeft: "473px",
       background: "#15ff43",      
@@ -275,7 +275,7 @@ const Program: FC = () => {
       offset: 1    
   }];
 
-  const frames11 = [{ //3 от REG к АЛУ 2вход
+  const frames11 = [{ //3 от REG к ALU 2вход
       marginTop: "340px",
       marginLeft: "473px",
       background: "#15ff43",      
@@ -373,7 +373,7 @@ const Program: FC = () => {
       offset: 1    
   }];
 
-  const frames15 = [{ //5 от RAM к АЛУ 1вход
+  const frames15 = [{ //5 от RAM к ALU 1вход
       marginTop: "322px",
       marginLeft: "1030px",
       background: "#15ff43",   
@@ -405,7 +405,7 @@ const Program: FC = () => {
       offset: 1    
   }];
 
-  const frames16 = [{ //5 от RAM к АЛУ 2вход
+  const frames16 = [{ //5 от RAM к ALU 2вход
       marginTop: "322px",
       marginLeft: "1030px",
       background: "#15ff43",   
@@ -559,7 +559,7 @@ const Program: FC = () => {
       offset: 1    
   }];
 
-  const frames22 = [{ //3 от SREG к АЛУ 1вход
+  const frames22 = [{ //3 от SREG к ALU 1вход
       marginTop: "108px",
       marginLeft: "480px",
       background: "#15ff43",      
@@ -581,7 +581,7 @@ const Program: FC = () => {
       offset: 1    
   }];
 
-  const frames23 = [{ //3 от SREG к АЛУ 2вход
+  const frames23 = [{ //3 от SREG к ALU 2вход
       marginTop: "108px",
       marginLeft: "480px",
       background: "#15ff43",      
@@ -611,7 +611,6 @@ const Program: FC = () => {
     while(rows_size <= 255) {
         rows.push({ address: Number(rows_size).toString(16), data: "", mark: "", command: "----", arg1:"", arg2:""}); 
         rows_size = rows_size + 3;
-        // console.log(rows);
     }
 
     setTimeout(() => {
@@ -989,7 +988,7 @@ const Program: FC = () => {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var RK = document.getElementById("RK");
-        var АЛУ = document.getElementById("АЛУ");
+        var ALU = document.getElementById("ALU");
         var Arg1 = document.getElementById(SM.value + "Arg1");
         var Arg2 = document.getElementById(SM.value + "Arg2");
         var o = document.getElementById("o");
@@ -1028,7 +1027,7 @@ const Program: FC = () => {
                             Data?.animate(frames11, config);
                             setTimeout(() => {
                                 buffer = Number(parseInt(RAM_data_from_mark.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1055,7 +1054,7 @@ const Program: FC = () => {
                             Data?.animate(frames11, config);
                             setTimeout(() => {
                                 buffer = Number(parseInt(RAM_data_from_mark.value, 16) + parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1081,7 +1080,7 @@ const Program: FC = () => {
                             Data?.animate(frames11, config);
                             setTimeout(() => {
                                 buffer = Number(parseInt(RAM_data_from_mark.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1110,7 +1109,7 @@ const Program: FC = () => {
                                 Data?.animate(frames5, config);
                                 setTimeout(() => {
                                     buffer = Number(parseInt(RAM_data_from_mark.value, 16) + parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1157,7 +1156,7 @@ const Program: FC = () => {
                             Data?.animate(frames5, config);
                             setTimeout(() => {
                                 buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(RAM_data_from_mark.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1186,7 +1185,7 @@ const Program: FC = () => {
                             Data?.animate(frames5, config);
                             setTimeout(() => { 
                                 buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(RAM_data_from_mark.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1216,7 +1215,7 @@ const Program: FC = () => {
                             Data?.animate(frames5, config);
                             setTimeout(() => {
                                 buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(RAM_data_from_mark.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1260,7 +1259,7 @@ const Program: FC = () => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1300,7 +1299,7 @@ const Program: FC = () => {
                                 Data?.animate(frames5, config);
                                 setTimeout(() => {
                                     buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1345,7 +1344,7 @@ const Program: FC = () => {
                                 var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
                                 var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                                 buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1373,7 +1372,7 @@ const Program: FC = () => {
                                 var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1402,7 +1401,7 @@ const Program: FC = () => {
                                 var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1430,7 +1429,7 @@ const Program: FC = () => {
                                 Data?.animate(frames5, config);
                                 setTimeout(() => {
                                     buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) + parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1476,7 +1475,7 @@ const Program: FC = () => {
                                 var xL_Arg2 = document.getElementById(Arg2.value[0] + "L");
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1502,7 +1501,7 @@ const Program: FC = () => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1528,7 +1527,7 @@ const Program: FC = () => {
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1554,7 +1553,7 @@ const Program: FC = () => {
                                 Data?.animate(frames5, config);
                                 setTimeout(() => {
                                     buffer = Number(parseInt(Arg1_end_point.value, 16) + parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1577,7 +1576,7 @@ const Program: FC = () => {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var RK = document.getElementById("RK");
-        var АЛУ = document.getElementById("АЛУ");
+        var ALU = document.getElementById("ALU");
         var Arg1 = document.getElementById(SM.value + "Arg1");
         var Arg2 = document.getElementById(SM.value + "Arg2");
         var o = document.getElementById("o");
@@ -1617,7 +1616,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(RAM_data_from_mark.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(255 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1645,7 +1644,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(RAM_data_from_mark.value, 16) < parseInt(xH_Arg2.value + xL_Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
                                 else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1672,7 +1671,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(RAM_data_from_mark.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1702,7 +1701,7 @@ const Program: FC = () => {
                                 setTimeout(() => {
                                     if (parseInt(RAM_data_from_mark.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1750,7 +1749,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(RAM_data_from_mark.value, 16)) buffer = Number(255 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1780,7 +1779,7 @@ const Program: FC = () => {
                             setTimeout(() => { 
                                 if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(RAM_data_from_mark.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
                                 else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1811,7 +1810,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(RAM_data_from_mark.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1856,7 +1855,7 @@ const Program: FC = () => {
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(255 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1897,7 +1896,7 @@ const Program: FC = () => {
                                 setTimeout(() => {
                                     if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(255 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1943,7 +1942,7 @@ const Program: FC = () => {
                                 var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                                 if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(xH_Arg2.value + xL_Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
                                 else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -1972,7 +1971,7 @@ const Program: FC = () => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2002,7 +2001,7 @@ const Program: FC = () => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2031,7 +2030,7 @@ const Program: FC = () => {
                                 setTimeout(() => {
                                     if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2078,7 +2077,7 @@ const Program: FC = () => {
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(xH_Arg2.value + xL_Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2105,7 +2104,7 @@ const Program: FC = () => {
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2132,7 +2131,7 @@ const Program: FC = () => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2159,7 +2158,7 @@ const Program: FC = () => {
                                 setTimeout(() => {
                                     if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2182,7 +2181,7 @@ const Program: FC = () => {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var RK = document.getElementById("RK");
-        var АЛУ = document.getElementById("АЛУ");
+        var ALU = document.getElementById("ALU");
         var Arg1 = document.getElementById(SM.value + "Arg1");
         var Arg2 = document.getElementById(SM.value + "Arg2");
         var o = document.getElementById("o");
@@ -2222,7 +2221,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(RAM_data_from_mark.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(255 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2246,7 +2245,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(RAM_data_from_mark.value, 16) < parseInt(xH_Arg2.value + xL_Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
                                 else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2269,7 +2268,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(RAM_data_from_mark.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2295,7 +2294,7 @@ const Program: FC = () => {
                                 setTimeout(() => {
                                     if (parseInt(RAM_data_from_mark.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     else buffer = Number(parseInt(RAM_data_from_mark.value, 16) - parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2339,7 +2338,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(RAM_data_from_mark.value, 16)) buffer = Number(255 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2365,7 +2364,7 @@ const Program: FC = () => {
                             setTimeout(() => { 
                                 if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(RAM_data_from_mark.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
                                 else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2391,7 +2390,7 @@ const Program: FC = () => {
                             setTimeout(() => {
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(RAM_data_from_mark.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(RAM_data_from_mark.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2432,7 +2431,7 @@ const Program: FC = () => {
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(255 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2469,7 +2468,7 @@ const Program: FC = () => {
                                 setTimeout(() => {
                                     if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(255 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 3) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2511,7 +2510,7 @@ const Program: FC = () => {
                                 var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
                                 if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(xH_Arg2.value + xL_Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
                                 else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2535,7 +2534,7 @@ const Program: FC = () => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2560,7 +2559,7 @@ const Program: FC = () => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2584,7 +2583,7 @@ const Program: FC = () => {
                                 setTimeout(() => {
                                     if (parseInt(xH_Arg1.value + xL_Arg1.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     else buffer = Number(parseInt(xH_Arg1.value + xL_Arg1.value, 16) - parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2626,7 +2625,7 @@ const Program: FC = () => {
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(xH_Arg2.value + xL_Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(xH_Arg2.value + xL_Arg2.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2649,7 +2648,7 @@ const Program: FC = () => {
                                 var Arg1_end_point = document.getElementById(Arg1.value);
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2672,7 +2671,7 @@ const Program: FC = () => {
                                 var Arg2_end_point = document.getElementById(Arg2.value);
                                 if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2_end_point.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
                                 else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2_end_point.value, 16)).toString(16);
-                                АЛУ.value = buffer;
+                                ALU.value = buffer;
                                 Data?.animate(frames1, config);
                                 setTimeout(() => {
                                     if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2695,7 +2694,7 @@ const Program: FC = () => {
                                 setTimeout(() => {
                                     if (parseInt(Arg1_end_point.value, 16) < parseInt(Arg2.value, 16)) buffer = Number(65535 + 1 + parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
                                     else buffer = Number(parseInt(Arg1_end_point.value, 16) - parseInt(Arg2.value, 16)).toString(16);
-                                    АЛУ.value = buffer;
+                                    ALU.value = buffer;
                                     Data?.animate(frames1, config);
                                     setTimeout(() => {
                                         if (buffer.length == 5) { buffer = buffer.substring(1, buffer.length);  o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
@@ -2732,7 +2731,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jc_comand() {
+    function JC_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2759,7 +2758,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jnc_comand() {
+    function JNC_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2786,7 +2785,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jz_comand() {
+    function JZ_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2813,7 +2812,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jnz_comand() {
+    function JNZ_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2840,7 +2839,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function js_comand() {
+    function JS_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2867,7 +2866,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jns_comand() {
+    function JNS_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2894,7 +2893,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jo_comand() {
+    function JO_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2921,7 +2920,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jno_comand() {
+    function JNO_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2948,7 +2947,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function ja_comand() {
+    function JA_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -2978,7 +2977,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jna_comand() {
+    function JNA_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3008,7 +3007,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jb_comand() {
+    function JB_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3035,7 +3034,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jnb_comand() {
+    function JNB_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3062,7 +3061,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jae_comand() {
+    function JAE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3089,7 +3088,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jnae_comand() {
+    function JNAE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3116,7 +3115,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jbe_comand() {
+    function JBE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3146,7 +3145,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jnbe_comand() {
+    function JNBE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3176,7 +3175,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jg_comand() {
+    function JG_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3209,7 +3208,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jng_comand() {
+    function JNG_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3242,7 +3241,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jl_comand() {
+    function JL_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3272,7 +3271,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jnl_comand() {
+    function JNL_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3302,7 +3301,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jge_comand() {
+    function JGE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3332,7 +3331,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jnge_comand() {
+    function JNGE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3362,7 +3361,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jle_comand() {
+    function JLE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3395,7 +3394,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jnle_comand() {
+    function JNLE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3428,7 +3427,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function je_comand() {
+    function JE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3455,7 +3454,7 @@ const Program: FC = () => {
         }, duration);
     }
 
-    function jne_comand() {
+    function JNE_comand() {
         var Data = document.getElementById("Data");
         var SM = document.getElementById("SM");
         var IP = document.getElementById("IP");
@@ -3480,6 +3479,198 @@ const Program: FC = () => {
                 z.style.background = 'white';
             }, duration);
         }, duration);
+    }
+
+    function MUL_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var RK = document.getElementById("RK");
+        var ALU = document.getElementById("ALU");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var o = document.getElementById("o");
+        var s = document.getElementById("s");
+        var z = document.getElementById("z");
+        var c = document.getElementById("c");
+        var buffer = "";
+
+        if (Arg1.value[0] == "[") {
+            for (const input of document.querySelectorAll("input.mark")) {
+                if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                    var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+                }
+            }
+
+            if (RAM_data_from_mark.value == "") RAM_data_from_mark.value = "0";
+
+
+            if (RAM_data_from_mark.value.length <= 2) {
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                if (AL.value == "") AL.value = "0";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames17, config);
+                    setTimeout(() => {
+                        RK.value = RAM_data_from_mark.value;
+                        Data?.animate(frames5, config);
+                        setTimeout(() => {
+                            buffer = Number(parseInt(AL.value, 16) * parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                            ALU.value = buffer;
+                            Data?.animate(frames1, config);
+                            setTimeout(() => {
+                                if (parseInt(buffer[0], 16) >= 8) { o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                Data?.animate(frames2, config);
+                                setTimeout(() => {
+                                    AH.value = buffer.substring(0, buffer.length - 2);
+                                    AL.value = buffer.substring(buffer.length - 2, buffer.length);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                }, duration);
+            } else {
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                var DH = document.getElementById("DH");
+                var DL = document.getElementById("DL");
+                if (AH.value == "") AH.value = "0";
+                if (AL.value == "") AL.value = "00";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames17, config);
+                    setTimeout(() => {
+
+                        RK.value = RAM_data_from_mark.value;
+                        Data?.animate(frames5, config);
+                        setTimeout(() => {
+                            buffer = Number(parseInt(AH.value + AL.value, 16) * parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                            ALU.value = buffer;
+                            Data?.animate(frames1, config);
+                            setTimeout(() => {
+                                if (parseInt(buffer[0], 16) >= 8) { o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                                Data?.animate(frames2, config);
+                                setTimeout(() => {
+                                    DH.value = buffer.substring(buffer.length - 8, buffer.length - 6);
+                                    DL.value = buffer.substring(buffer.length - 6, buffer.length - 4);
+                                    AH.value = buffer.substring(buffer.length - 4, buffer.length - 2);
+                                    AL.value = buffer.substring(buffer.length - 2, buffer.length);
+                                }, duration);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                }, duration);
+            }
+            return; 
+        }
+
+        switch(Arg1.value){
+            case "AH": 
+            case "BH":
+            case "CH":
+            case "DH":
+            case "AL": 
+            case "BL":
+            case "CL":
+            case "DL":
+                var Arg1_end_point = document.getElementById(Arg1.value);
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                if (Arg1_end_point.value == "") Arg1_end_point.value = "0";
+                if (AL.value == "") AL.value = "0";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames11, config);
+                    setTimeout(() => {
+                        buffer = Number(parseInt(AL.value, 16) * parseInt(Arg1_end_point.value, 16)).toString(16);
+                        ALU.value = buffer;
+                        Data?.animate(frames1, config);
+                        setTimeout(() => {
+                            if (parseInt(buffer[0], 16) >= 8) { o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                            Data?.animate(frames2, config);
+                            setTimeout(() => {
+                                AH.value = buffer.substring(0, buffer.length - 2);
+                                AL.value = buffer.substring(buffer.length - 2, buffer.length);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                }, duration);
+                break;
+            
+            case "Ax": 
+            case "Bx":
+            case "Cx":
+            case "Dx":
+                var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                var DH = document.getElementById("DH");
+                var DL = document.getElementById("DL");
+                if (xH_Arg1.value == "") xH_Arg1.value = "0";
+                if (xL_Arg1.value == "") xL_Arg1.value = "00";
+                if (AL.value == "") AL.value = "00";
+                if (AH.value == "") AH.value = "0";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames11, config);
+                    setTimeout(() => {
+                        buffer = Number(parseInt(AH.value + AL.value, 16) * parseInt(xH_Arg1.value + xL_Arg1.value, 16)).toString(16);
+                        ALU.value = buffer;
+                        Data?.animate(frames1, config);
+                        setTimeout(() => {
+                            if (parseInt(buffer[0], 16) >= 8) { o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                            Data?.animate(frames2, config);
+                            setTimeout(() => {
+                                DH.value = buffer.substring(buffer.length - 8, buffer.length - 6);
+                                DL.value = buffer.substring(buffer.length - 6, buffer.length - 4);
+                                AH.value = buffer.substring(buffer.length - 4, buffer.length - 2);
+                                AL.value = buffer.substring(buffer.length - 2, buffer.length);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                }, duration);
+                break;
+
+            case "Si":
+            case "Di":
+            case "BP":
+            case "SP":
+            case "IP":
+                var Arg1_end_point = document.getElementById(Arg1.value);
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                var DH = document.getElementById("DH");
+                var DL = document.getElementById("DL");
+                if (Arg1_end_point.value == "") Arg1_end_point.value = "0";
+                if (AL.value == "") AL.value = "00";
+                if (AH.value == "") AH.value = "0";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames11, config);
+                    setTimeout(() => {
+                        buffer = Number(parseInt(AH.value + AL.value, 16) * parseInt(Arg1_end_point.value, 16)).toString(16);
+                        ALU.value = buffer;
+                        Data?.animate(frames1, config);
+                        setTimeout(() => {
+                            if (parseInt(buffer[0], 16) >= 8) { o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                            Data?.animate(frames2, config);
+                            setTimeout(() => {
+                                DH.value = buffer.substring(buffer.length - 8, buffer.length - 6);
+                                DL.value = buffer.substring(buffer.length - 6, buffer.length - 4);
+                                AH.value = buffer.substring(buffer.length - 4, buffer.length - 2);
+                                AL.value = buffer.substring(buffer.length - 2, buffer.length);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                }, duration);
+                break;
+
+            case "SS":
+            case "DS":
+            case "CS":
+            case "ES":
+                return;
+        }
     }
 
     function nulls(lengtht :number) {
@@ -3510,52 +3701,106 @@ const Program: FC = () => {
                     Data?.animate(frames17, config);
                     setTimeout(() => {
                         var RAMcomand = document.getElementById(SM.value + "command");
-                            // console.log(IP.value);
-                            // console.log(parseInt(IP.value, 16));
-                            // if ("" != IP.value)console.log(document.getElementById(IP.value + "command"));
-                            // console.log(RAMcomand?.value);
-                        if (RAMcomand?.value == "----") RK.value = 0;
-                        else RK.value = Number(RAMcomand?.value).toString(16);
+                        if (RAMcomand?.value == "----") RK.value = ff;//0
+                        else RK.value = RAMcomand?.value;
                         IP.value = Number(parseInt(IP.value, 16) + 3).toString(16);
+                        if (IP.value.length == 3) IP.value = 0;
                         switch(RK.value){
-                            case "1" : 
+                            case "0" : 
                                 MOV_comand();
                                 break;
-                            case "2" : 
+                            case "1" : 
                                 ADD_comand();
                                 break;
-                            case "3" : 
+                            case "2" : 
                                 SUB_comand();
                                 break;
-                            case "4" : 
+                            case "3" : 
                                 CMP_comand();
                                 break;
-                            case "5" :
+                            case "4" :
                                 JMP_comand();
                                 break;
+                            case "5" :
+                                JC_comand();
+                                break;
                             case "6" :
-                                jc_comand();
+                                JNC_comand();
                                 break;
                             case "7" :
-                                jnc_comand();
+                                JZ_comand();
                                 break;
                             case "8" :
-                                jz_comand();
+                                JNZ_comand();
                                 break;
                             case "9" :
-                                jnz_comand();
+                                JS_comand();
                                 break;
                             case "a" :
-                                js_comand();
+                                JNS_comand();
                                 break;
                             case "b" :
-                                jns_comand();
+                                JO_comand();
                                 break;
                             case "c" :
-                                jo_comand();
+                                JNO_comand();
                                 break;
                             case "d" :
-                                jno_comand();
+                                JA_comand();
+                                break;
+                            case "e" :
+                                JNA_comand();
+                                break;
+                            case "f" :
+                                JB_comand();
+                                break;
+                            case "10" : 
+                                JNB_comand();
+                                break;
+                            case "11" : 
+                                JAE_comand();
+                                break;
+                            case "12" : 
+                                JNAE_comand();
+                                break;
+                            case "13" : 
+                                JBE_comand();
+                                break;
+                            case "14" :
+                                JNBE_comand();
+                                break;
+                            case "15" :
+                                JG_comand();
+                                break;
+                            case "16" :
+                                JNG_comand();
+                                break;
+                            case "17" :
+                                JL_comand();
+                                break;
+                            case "18" :
+                                JNL_comand();
+                                break;
+                            case "19" :
+                                JGE_comand();
+                                break;
+                            case "1a" :
+                                JNGE_comand();
+                                break;
+                            case "1b" :
+                                JLE_comand();
+                                break;
+                            case "1c" :
+                                JNLE_comand();
+                                break;
+                            case "1d" :
+                                JE_comand();
+                                break;
+                            case "1e" :
+                                JNE_comand();
+                                break;
+                            case "1f" :
+                                MUL_comand();
                                 break;
                         }
                     }, duration);
@@ -3593,19 +3838,39 @@ const Program: FC = () => {
                             <td><input id= {row.address + "mark"} className ="mark" type="text" style={{width: 106, textAlign: 'right', border: '2px black solid'}} defaultValue ={row.mark}/></td>
                             <select id= {row.address + "command"} defaultValue ={row.command}>
                             <option disabled selected>----</option>
-                            <option value="1">MOV</option>
-                            <option value="2">ADD</option>
-                            <option value="3">SUB</option>
-                            <option value="4">CMP</option>
-                            <option value="5">JMP</option>
-                            <option value="6">jc</option>
-                            <option value="7">jnc</option>
-                            <option value="8">jz</option>
-                            <option value="9">jnz</option>
-                            <option value="a">js</option>
-                            <option value="b">jns</option>
-                            <option value="c">jo</option>
-                            <option value="d">jno</option>
+                            <option value="0">MOV</option>
+                            <option value="1">ADD</option>
+                            <option value="2">SUB</option>
+                            <option value="3">CMP</option>
+                            <option value="4">JMP</option>
+                            <option value="5">JC</option>
+                            <option value="6">JNC</option>
+                            <option value="7">JZ</option>
+                            <option value="8">JNZ</option>
+                            <option value="9">JS</option>
+                            <option value="a">JNS</option>
+                            <option value="b">JO</option>
+                            <option value="c">JNO</option>
+                            <option value="d">JA</option>
+                            <option value="e">JNA</option>
+                            <option value="f">JB</option>
+                            <option value="10">JNB</option>
+                            <option value="11">JAE</option>
+                            <option value="12">JNAE</option>
+                            <option value="13">JBE</option>
+                            <option value="14">JNBE</option>
+                            <option value="15">JG</option>
+                            <option value="16">JNG</option>
+                            <option value="17">JL</option>
+                            <option value="18">JNL</option>
+                            <option value="19">JGE</option>
+                            <option value="1a">JNGE</option>
+                            <option value="1b">JLE</option>
+                            <option value="1c">JNLE</option>
+                            <option value="1d">JE</option>
+                            <option value="1e">JNE</option>
+                            <option value="1f">MUL</option>
+                            
                             </select>
                             <td><input id= {row.address + "Arg1"} type="text" style={{width: 50, textAlign: 'center', border: '2px black solid'}} defaultValue ={row.arg1}/></td>
                             <td><input id= {row.address + "Arg2"} type="text" style={{width: 50, textAlign: 'center', border: '2px black solid'}} defaultValue ={row.arg2}/></td>
@@ -3643,7 +3908,7 @@ const Program: FC = () => {
             </div>
             <div className ="SM" style={{width: 72, height: 52, left: 783, top: 129, position: 'absolute', textAlign: 'center', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 28, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>SM</div>
             <input type="text" placeholder="SM" id ="SM" readOnly style={{width: 72, height: 104, left: 783, top: 179, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}} />
-            <div className="РФt" style={{width: 72, height: 29, left: 10, top: 115, position: 'absolute', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 28, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>РФ</div>
+            <div className="РФt" style={{width: 72, height: 29, left: 10, top: 115, position: 'absolute', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 28, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>RF</div>
             <div className="o" style={{width: 26, height: 26, left: 72, top: 80, position: 'absolute', textAlign: 'center', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>o</div>
             <div className="s" style={{width: 26, height: 26, left: 102, top: 80, position: 'absolute', textAlign: 'center', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>s</div>
             <div className="z" style={{width: 26, height: 26, left: 132, top: 80, position: 'absolute', textAlign: 'center', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 15, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>z</div>
@@ -3654,9 +3919,9 @@ const Program: FC = () => {
                 <input type="text" placeholder="z" id ="z" defaultValue ="0" style={{width: 26, height: 26, left: 60, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
                 <input type="text" placeholder="c" id ="c" defaultValue ="0" style={{width: 26, height: 26,left: 90, top: 0, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}}/>
             </div>
-            <div className="АЛУ" style={{ zIndex: 1, width: 72, height: 52, left: 172, top: 330, position: 'absolute', textAlign: 'center', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 28, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>АЛУ</div>
+            <div className="ALU" style={{ zIndex: 1, width: 72, height: 52, left: 172, top: 330, position: 'absolute', textAlign: 'center', justifyContent: 'flex-end', display: 'flex', flexDirection: 'column', color: 'black', fontSize: 28, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>ALU</div>
             <div data-svg-wrapper data-layer="Rectangle 27" className="Rectangle27" style={{ zIndex: 1, left: 172, top: 160, position: 'absolute'}}>
-                <input placeholder="АЛУ" id="АЛУ" readOnly style={{zIndex: 1, width: 60, height: 26, left: 5, top: 77, position: 'absolute', textAlign: 'center', border: '0px white solid'}}/>
+                <input placeholder="ALU" id="ALU" readOnly style={{zIndex: 1, width: 60, height: 26, left: 5, top: 77, position: 'absolute', textAlign: 'center', border: '0px white solid'}}/>
                 <svg width="72" height="182" viewBox="0 0 72 182" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M71 180.48L1 150.325V29.9326L71 1.48633V180.48Z" fill="white" stroke="black" stroke-width="2"/>
                 </svg>
@@ -3676,14 +3941,14 @@ const Program: FC = () => {
                 <input type="text" placeholder="CS" id ="CS" style={{width: 72, height: 26, left: 0, top: 52, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}} />
                 <input type="text" placeholder="ES" id ="ES" style={{width: 72, height: 26, left: 0, top: 78, position: 'absolute', textAlign: 'center', background: 'white', border: '2px black solid'}} />
             </div>
-            {/* от АЛУ к РФ pattern="#[0-9A-F]{6}"*/}
+            {/* от ALU к RF pattern="#[0-9A-F]{6}"*/}
             <div data-layer="Line 1" className="Line1" style={{width: 79, height: 0, left: 173, top: 481-243, position: 'absolute', transform: 'rotate(-180deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 2" className="Line2" style={{width: 339-243, height: 0, left: 93, top: 481-243, position: 'absolute', transform: 'rotate(-90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 3" className="Line3" style={{width: 52, height: 0, left: 173, top: 454-243, position: 'absolute', transform: 'rotate(-180deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 4" className="Line4" style={{width: 312-243, height: 0, left: 120, top: 454-243, position: 'absolute', transform: 'rotate(-90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 40" className="Line40" style={{width: 14.87, height: 0, left: 93, top: 148, position: 'absolute', transform: 'rotate(-20deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 41" className="Line41" style={{width: 14.87, height: 0, left: 120, top: 148, position: 'absolute', transform: 'rotate(-160deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
-            {/* от АЛУ к RK */}
+            {/* от ALU к RK */}
             <div data-layer="Line 5" className="Line5" style={{width: 78, height: 0, left: 172, top: 598-337, position: 'absolute', transform: 'rotate(180deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 6" className="Line6" style={{width: 157, height: 0, left: 93, top: 598-337, position: 'absolute', transform: 'rotate(90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 16" className="Line16" style={{width: 230, height: 0, left: 93, top: 755-337, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
@@ -3696,7 +3961,7 @@ const Program: FC = () => {
             <div data-layer="Line 37" className="Line37" style={{width: 14.87, height: 0, left: 350, top: 776-337, position: 'absolute', transform: 'rotate(160deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 38" className="Line38" style={{width: 14.87, height: 0, left: 323, top: 770-337, position: 'absolute', transform: 'rotate(-20deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 39" className="Line39" style={{width: 14.87, height: 0, left: 350, top: 770-337, position: 'absolute', transform: 'rotate(-160deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
-            {/* от RK к REG и АЛУ */}
+            {/* от RK к REG и ALU */}
             <div data-layer="Line 30" className="Line30" style={{width: 91, height: 0, left: 414, top: 728-337, position: 'absolute', transform: 'rotate(-90deg)', transformOrigin: 'top left', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 28" className="Line28" style={{width: 170, height: 0, left: 244, top: 638-337, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>
             <div data-layer="Line 27" className="Line27" style={{width: 170, height: 0, left: 244, top: 611-337, position: 'absolute', outline: '1px black solid', outlineOffset: '-0.50px'}}></div>      
