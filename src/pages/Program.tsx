@@ -3673,6 +3673,198 @@ const Program: FC = () => {
         }
     }
 
+    function DIV_comand() {
+        var Data = document.getElementById("Data");
+        var SM = document.getElementById("SM");
+        var RK = document.getElementById("RK");
+        var ALU = document.getElementById("ALU");
+        var Arg1 = document.getElementById(SM.value + "Arg1");
+        var Arg2 = document.getElementById(SM.value + "Arg2");
+        var o = document.getElementById("o");
+        var s = document.getElementById("s");
+        var z = document.getElementById("z");
+        var c = document.getElementById("c");
+        var buffer = "";
+        var mod = "";
+
+        console.log(parseInt(Arg1.value) % parseInt(Arg2.value));
+
+        if (Arg1.value[0] == "[") {
+            for (const input of document.querySelectorAll("input.mark")) {
+                if (input.value.includes(Arg1.value.substring(1, Arg1.value.length - 1))) {
+                    var RAM_data_from_mark = document.getElementById(input.id.substring(0, input.id.length - 4) + "data");
+                }
+            }
+
+            if (RAM_data_from_mark.value == "") RAM_data_from_mark.value = "0";
+
+
+            if (RAM_data_from_mark.value.length <= 2) {
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                if (AH.value == "") AH.value = "0";
+                if (AL.value.length <= 1) AL.value = AL.value + "0";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames11, config);
+                    setTimeout(() => {
+                        mod = Number(parseInt(AH.value + AL.value, 16) % parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                        buffer = Number((parseInt(AH.value + AL.value, 16) - parseInt(mod, 16)) / parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                        ALU.value = buffer + " (" + mod + ")";
+                        Data?.animate(frames2, config);
+                        setTimeout(() => {
+                            AH.value = mod;
+                            AL.value = buffer;
+                        }, duration);
+                    }, duration);
+                }, duration);
+            } else {
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                var DH = document.getElementById("DH");
+                var DL = document.getElementById("DL");
+                if (AL.value == "") AL.value = "00";
+                if (AH.value == "") AH.value = "0";
+                if (DL.value == "") AL.value = "00";
+                if (DH.value == "") AH.value = "0";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames11, config);
+                    setTimeout(() => {
+                        mod = Number(parseInt(DH.value + DL.value + AH.value + AL.value, 16) % parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                        buffer = Number((parseInt(DH.value + DL.value + AH.value + AL.value, 16) - parseInt(mod, 16)) / parseInt(RAM_data_from_mark.value, 16)).toString(16);
+                        ALU.value = buffer + " (" + mod + ")";
+                        Data?.animate(frames1, config);
+                        setTimeout(() => {
+                            if (parseInt(buffer[0], 16) >= 8) { o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                            Data?.animate(frames2, config);
+                            setTimeout(() => {
+                                DH.value = mod.substring(0, mod.length - 2);
+                                DL.value = mod.substring(mod.length - 2, mod.length);
+                                AH.value = buffer.substring(buffer.length - 4, buffer.length - 2);
+                                AL.value = buffer.substring(buffer.length - 2, buffer.length);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                }, duration);
+            }
+            return; 
+        }
+
+        switch(Arg1.value){
+            case "AH": 
+            case "BH":
+            case "CH":
+            case "DH":
+            case "AL": 
+            case "BL":
+            case "CL":
+            case "DL":
+                var Arg1_end_point = document.getElementById(Arg1.value);
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                if (Arg1_end_point.value == "") Arg1_end_point.value = "0";
+                if (AH.value == "") AH.value = "0";
+                if (AL.value == "") AL.value = "0";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames11, config);
+                    setTimeout(() => {
+                        mod = Number(parseInt(AH.value + AL.value, 16) % parseInt(Arg1_end_point.value, 16)).toString(16);
+                        buffer = Number((parseInt(AH.value + AL.value, 16) - parseInt(mod, 16)) / parseInt(Arg1_end_point.value, 16)).toString(16);
+                        ALU.value = buffer + " (" + mod + ")";
+                        Data?.animate(frames2, config);
+                        setTimeout(() => {
+                            AH.value = mod;
+                            AL.value = buffer;
+                        }, duration);
+                    }, duration);
+                }, duration);
+                break;
+            
+            case "Ax": 
+            case "Bx":
+            case "Cx":
+            case "Dx":
+                var xH_Arg1 = document.getElementById(Arg1.value[0] + "H");
+                var xL_Arg1 = document.getElementById(Arg1.value[0] + "L");
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                var DH = document.getElementById("DH");
+                var DL = document.getElementById("DL");
+                if (xH_Arg1.value == "") xH_Arg1.value = "0";
+                if (xL_Arg1.value == "") xL_Arg1.value = "00";
+                if (AL.value == "") AL.value = "00";
+                if (AH.value == "") AH.value = "0";
+                if (DL.value == "") AL.value = "00";
+                if (DH.value == "") AH.value = "0";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames11, config);
+                    setTimeout(() => {
+                        mod = Number(parseInt(DH.value + DL.value + AH.value + AL.value, 16) % parseInt(xH_Arg1.value + xL_Arg1.value, 16)).toString(16);
+                        buffer = Number((parseInt(DH.value + DL.value + AH.value + AL.value, 16) - parseInt(mod, 16)) / parseInt(xH_Arg1.value + xL_Arg1.value, 16)).toString(16);
+                        buffer + " (" + mod + ")";
+                        Data?.animate(frames1, config);
+                        setTimeout(() => {
+                            if (parseInt(buffer[0], 16) >= 8) { o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                            Data?.animate(frames2, config);
+                            setTimeout(() => {
+                                DH.value = mod.substring(0, mod.length - 2);
+                                DL.value = mod.substring(mod.length - 2, mod.length);
+                                AH.value = buffer.substring(0, buffer.length - 2);
+                                AL.value = buffer.substring(buffer.length - 2, buffer.length);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                }, duration);
+                break;
+
+            case "Si":
+            case "Di":
+            case "BP":
+            case "SP":
+            case "IP":
+                var Arg1_end_point = document.getElementById(Arg1.value);
+                var AH = document.getElementById("AH");
+                var AL = document.getElementById("AL");
+                var DH = document.getElementById("DH");
+                var DL = document.getElementById("DL");
+                if (Arg1_end_point.value == "") Arg1_end_point.value = "0";
+                if (AL.value == "") AL.value = "00";
+                if (AH.value == "") AH.value = "0";
+                if (DL.value == "") AL.value = "00";
+                if (DH.value == "") AH.value = "0";
+                Data?.animate(frames10, config);
+                setTimeout(() => {
+                    Data?.animate(frames11, config);
+                    setTimeout(() => {
+                        mod = Number(parseInt(DH.value + DL.value + AH.value + AL.value, 16) % parseInt(Arg1_end_point.value, 16)).toString(16);
+                        buffer = Number((parseInt(DH.value + DL.value + AH.value + AL.value, 16) - parseInt(mod, 16)) / parseInt(Arg1_end_point.value, 16)).toString(16);
+                        ALU.value = buffer + " (" + mod + ")";
+                        Data?.animate(frames1, config);
+                        setTimeout(() => {
+                            if (parseInt(buffer[0], 16) >= 8) { o.value = "1"; c.value = "1"; } else { o.value = "0"; c.value = "0"; }
+                            Data?.animate(frames2, config);
+                            setTimeout(() => {
+                                DH.value = mod.substring(0, mod.length - 2);
+                                DL.value = mod.substring(mod.length - 2, mod.length);
+                                AH.value = buffer.substring(buffer.length - 4, buffer.length - 2);
+                                AL.value = buffer.substring(buffer.length - 2, buffer.length);
+                            }, duration);
+                        }, duration);
+                    }, duration);
+                }, duration);
+                break;
+
+            case "SS":
+            case "DS":
+            case "CS":
+            case "ES":
+                return;
+        }
+    }
+
     function nulls(lengtht :number) {
         var nulls:String = "";
 
@@ -3802,6 +3994,9 @@ const Program: FC = () => {
                             case "1f" :
                                 MUL_comand();
                                 break;
+                            case "20" :
+                                DIV_comand();
+                                break;
                         }
                     }, duration);
                     }, duration);
@@ -3870,7 +4065,8 @@ const Program: FC = () => {
                             <option value="1d">JE</option>
                             <option value="1e">JNE</option>
                             <option value="1f">MUL</option>
-                            
+                            <option value="20">DIV</option>
+
                             </select>
                             <td><input id= {row.address + "Arg1"} type="text" style={{width: 50, textAlign: 'center', border: '2px black solid'}} defaultValue ={row.arg1}/></td>
                             <td><input id= {row.address + "Arg2"} type="text" style={{width: 50, textAlign: 'center', border: '2px black solid'}} defaultValue ={row.arg2}/></td>
